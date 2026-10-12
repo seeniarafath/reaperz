@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Control Center | REAPERZ Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div style="display:flex; align-items:center;">
+      <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+      <span class="admin-header-badge">STAFF DASHBOARD</span>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="members.html">Members</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-admin-link active" href="admin.html">Staff Portal</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="page-title">
+      <p class="eyebrow">HEADQUARTERS COMMAND</p>
+      <h1>COMMUNITY <span>DASHBOARD</span></h1>
+      <p>Manage members roster, review join applications, and monitor community inboxes.</p>
+    </section>
+
+    <section class="section">
+      <!-- STATS OVERVIEW CARDS -->
+      <div class="admin-stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-info">
+            <strong id="statTotalMembers">0</strong>
+            <span>Total Members</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(41,224,127,0.1); color:var(--green);">🟢</div>
+          <div class="stat-info">
+            <strong id="statOnlineMembers">0</strong>
+            <span>Online Gamers</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(255,183,3,0.1); color:var(--gold);">📋</div>
+          <div class="stat-info">
+            <strong id="statPendingApps">0</strong>
+            <span>Pending Applications</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(255,23,68,0.1); color:var(--red);">📬</div>
+          <div class="stat-info">
+            <strong id="statTotalMessages">0</strong>
+            <span>Contact Messages</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABS NAVIGATION -->
+      <div class="admin-tabs">
+        <button class="tab-btn active" data-tab="tab-applications">Join Applications</button>
+        <button class="tab-btn" data-tab="tab-members">Members Management</button>
+        <button class="tab-btn" data-tab="tab-messages">Contact Messages</button>
+        <button class="tab-btn" data-tab="tab-settings">System Settings</button>
+      </div>
+
+      <!-- 1. APPLICATIONS PANEL -->
+      <section id="tab-applications" class="admin-panel-section active">
+        <div class="panel-header-bar">
+          <div>
+            <h3>Applications Queue</h3>
+            <p style="color:var(--muted); font-size:13.5px;">Review candidates who applied via the Join Us form.</p>
+          </div>
+        </div>
+
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Applicant</th>
+                <th>Discord</th>
+                <th>Age</th>
+                <th>Game</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="applicationsTableBody">
+              <!-- Rendered dynamically via js/admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2. MEMBERS PANEL -->
+      <section id="tab-members" class="admin-panel-section">
+        <div class="panel-header-bar">
+          <div>
+            <h3>Official Community Roster</h3>
+            <p style="color:var(--muted); font-size:13.5px;">Members displayed on the public Members page.</p>
+          </div>
+          <button id="openAddMemberBtn" class="btn btn-primary btn-sm">+ Add New Member</button>
+        </div>
+
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Member</th>
+                <th>Role</th>
+                <th>Game</th>
+                <th>Discord</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="membersTableBody">
+              <!-- Rendered dynamically via js/admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3. CONTACT MESSAGES PANEL -->
+      <section id="tab-messages" class="admin-panel-section">
+        <div class="panel-header-bar">
+          <div>
+            <h3>Incoming Messages</h3>
+            <p style="color:var(--muted); font-size:13.5px;">Partnerships, support inquiries, and reports from the Contact page.</p>
+          </div>
+        </div>
+
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Sender</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="messagesTableBody">
+              <!-- Rendered dynamically via js/admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 4. SYSTEM SETTINGS PANEL -->
+      <section id="tab-settings" class="admin-panel-section">
+        <div class="card" style="max-width:700px;">
+          <h3 style="margin-bottom:12px;">Database Management &amp; Utilities</h3>
+          <p style="color:var(--muted); margin-bottom:20px;">
+            The portal runs in hybrid mode. If the Node.js server (<code>node server.js</code>) is active, data saves to <code>data/db.json</code>. If running via VS Code Live Server, data is safely saved in your browser's LocalStorage.
+          </p>
+          <div style="display:flex; gap:14px; flex-wrap:wrap;">
+            <button id="resetDbBtn" class="btn btn-danger btn-sm">↺ Reset Database to Default Seed</button>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- ADD MEMBER MODAL -->
+  <div id="addMemberModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font:700 18px 'Orbitron';">Add New Member</h3>
+        <button id="closeAddMemberBtn" class="modal-close">&times;</button>
+      </div>
+      <form id="addMemberForm" class="form-card" style="padding:0; background:none; border:none;">
+        <label>
+          Member Name / Call-sign *
+          <input name="name" required placeholder="e.g. REAPER ARAFATH">
+        </label>
+        <label>
+          Community Role *
+          <select name="role" required>
+            <option value="Founder">Founder</option>
+            <option value="Admin">Admin</option>
+            <option value="Moderator">Moderator</option>
+            <option value="Member" selected>Member</option>
+          </select>
+        </label>
+        <label>
+          Game Focus
+          <input name="game" value="GTA V / FiveM" placeholder="GTA V / FiveM">
+        </label>
+        <label>
+          Discord Tag
+          <input name="discord" placeholder="username#1234">
+        </label>
+        <label>
+          Initial Status
+          <select name="status">
+            <option value="Online" selected>Online</option>
+            <option value="Offline">Offline</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" type="submit" style="margin-top:10px;">SAVE MEMBER</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+      <p>Tamil GTA 5 Online &amp; FiveM Community</p>
+    </div>
+    <div class="footer-links">
+      <a href="members.html">Members</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Admin</a>
+    </div>
+    <p class="copyright">© 2026 REAPERZ. Built by REAPER ARAFATH. All rights reserved.</p>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

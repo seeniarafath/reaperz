@@ -1,0 +1,238 @@
+/* ==========================================================================
+   REAPERZ COMMUNITY - ADMIN DASHBOARD STYLES
+   ========================================================================== */
+
+.admin-header-badge {
+  background: rgba(255, 23, 68, 0.2);
+  color: var(--red);
+  border: 1px solid rgba(255, 23, 68, 0.4);
+  font: 700 11px 'Orbitron', sans-serif;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-left: 10px;
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 35px;
+}
+
+.stat-card {
+  background: #0d1421;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.stat-icon {
+  font-size: 32px;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(0, 183, 255, 0.1);
+  display: grid;
+  place-items: center;
+}
+
+.stat-info strong {
+  display: block;
+  font: 800 28px 'Orbitron', sans-serif;
+  color: #fff;
+}
+
+.stat-info span {
+  color: var(--muted);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--muted);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font: 700 13px 'Orbitron', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: #fff;
+  background: rgba(16, 34, 59, 0.4);
+}
+
+.tab-btn.active {
+  color: #fff;
+  background: #10223b;
+  border-color: var(--blue2);
+  box-shadow: 0 0 14px rgba(0, 183, 255, 0.2);
+}
+
+.admin-panel-section {
+  display: none;
+}
+
+.admin-panel-section.active {
+  display: block;
+}
+
+.panel-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.admin-table-container {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #090e17;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.admin-table th {
+  background: #0f1827;
+  padding: 15px 18px;
+  font: 700 12px 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+  color: var(--blue2);
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #142033;
+  color: #cbd8ea;
+}
+
+.admin-table tr:hover {
+  background: rgba(16, 34, 59, 0.3);
+}
+
+.badge-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font: 700 11px 'Orbitron', sans-serif;
+}
+
+.badge-status.pending {
+  background: rgba(255, 183, 3, 0.15);
+  color: var(--gold);
+  border: 1px solid rgba(255, 183, 3, 0.3);
+}
+
+.badge-status.approved {
+  background: rgba(41, 224, 127, 0.15);
+  color: var(--green);
+  border: 1px solid rgba(41, 224, 127, 0.3);
+}
+
+.badge-status.rejected {
+  background: rgba(255, 23, 68, 0.15);
+  color: var(--red);
+  border: 1px solid rgba(255, 23, 68, 0.3);
+}
+
+.action-btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-sm {
+  padding: 7px 12px;
+  font-size: 11px;
+  border-radius: 6px;
+}
+
+.btn-success {
+  background: #147a46;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background: #199c59;
+}
+
+/* Modal styling */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 3, 6, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  place-items: center;
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: grid;
+}
+
+.modal-box {
+  background: #0d1522;
+  border: 1px solid #233959;
+  border-radius: 14px;
+  max-width: 520px;
+  width: 100%;
+  padding: 28px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-tabs {
+    flex-wrap: wrap;
+  }
+}

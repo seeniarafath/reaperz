@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Headquarters | REAPERZ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="members.html">Members</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a class="active" href="contact.html">Contact</a>
+      <a class="nav-admin-link" href="admin.html">Staff Portal</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="page-title">
+      <p class="eyebrow">GET IN TOUCH</p>
+      <h1>CONTACT <span>REAPERZ</span></h1>
+      <p>Questions, server partnerships, crew reports, or sponsorship opportunities.</p>
+    </section>
+
+    <section class="section contact-layout">
+      <!-- CONTACT DETAILS -->
+      <div class="contact-info">
+        <h2>CONTACT <span>HQ</span></h2>
+        
+        <div class="contact-item">
+          <b>💬 Discord Community</b>
+          <p>Join our active Discord server for direct voice comms, match scheduling, and instant crew support.</p>
+          <a href="#" class="fake-link">discord.gg/reaperz-tamil</a>
+        </div>
+
+        <div class="contact-item">
+          <b>📧 Official Email</b>
+          <p>For administrative inquiries, server partnerships, and event sponsorships.</p>
+          <a href="mailto:contact@reaperz.community" class="fake-link">contact@reaperz.community</a>
+        </div>
+
+        <div class="contact-item">
+          <b>🎮 Supported Platforms</b>
+          <p>GTA 5 Online (PC) • FiveM Custom RP Servers • Tamil Gaming Sessions</p>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <form id="contactForm" class="form-card">
+        <label>
+          Your Name *
+          <input name="name" required placeholder="Your full name or gamertag">
+        </label>
+        
+        <label>
+          Email Address *
+          <input name="email" type="email" required placeholder="you@example.com">
+        </label>
+
+        <label>
+          Subject *
+          <input name="subject" required placeholder="Partnership / Support / General Question">
+        </label>
+
+        <label>
+          Message *
+          <textarea name="message" rows="6" required placeholder="Write your inquiry or message here..."></textarea>
+        </label>
+
+        <button class="btn btn-primary" type="submit">SEND MESSAGE</button>
+        <p id="contactMessage" class="form-message"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+      <p>Tamil GTA 5 Online &amp; FiveM Community</p>
+    </div>
+    <div class="footer-links">
+      <a href="members.html">Members</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Admin</a>
+    </div>
+    <p class="copyright">© 2026 REAPERZ. Built by REAPER ARAFATH. All rights reserved.</p>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/forms.js"></script>
+</body>
+</html>

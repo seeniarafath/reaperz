@@ -1,0 +1,109 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "name": "REAPER ARAFATH",
+      "role": "Founder",
+      "game": "GTA V / FiveM",
+      "discord": "arafath",
+      "status": "Online",
+      "avatar": "",
+      "joined_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "WOLF",
+      "role": "Admin",
+      "game": "FiveM",
+      "discord": "wolf",
+      "status": "Online",
+      "avatar": "",
+      "joined_at": "2026-01-15T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "SHADOW",
+      "role": "Moderator",
+      "game": "GTA V Online",
+      "discord": "shadow",
+      "status": "Offline",
+      "avatar": "",
+      "joined_at": "2026-02-01T00:00:00Z"
+    },
+    {
+      "id": 4,
+      "name": "KING",
+      "role": "Moderator",
+      "game": "FiveM",
+      "discord": "king",
+      "status": "Online",
+      "avatar": "",
+      "joined_at": "2026-02-10T00:00:00Z"
+    },
+    {
+      "id": 5,
+      "name": "VIKRAM",
+      "role": "Member",
+      "game": "GTA V Online",
+      "discord": "vikram",
+      "status": "Online",
+      "avatar": "",
+      "joined_at": "2026-03-01T00:00:00Z"
+    },
+    {
+      "id": 6,
+      "name": "SURIYA",
+      "role": "Member",
+      "game": "FiveM",
+      "discord": "suriya",
+      "status": "Online",
+      "avatar": "",
+      "joined_at": "2026-03-05T00:00:00Z"
+    },
+    {
+      "id": 7,
+      "name": "RAJ",
+      "role": "Member",
+      "game": "GTA V Online",
+      "discord": "raj",
+      "status": "Online",
+      "avatar": "",
+      "joined_at": "2026-03-12T00:00:00Z"
+    },
+    {
+      "id": 8,
+      "name": "KARTHI",
+      "role": "Member",
+      "game": "FiveM",
+      "discord": "karthi",
+      "status": "Online",
+      "avatar": "",
+      "joined_at": "2026-03-20T00:00:00Z"
+    },
+    {
+      "id": 1791822684054,
+      "name": "kjfjvus",
+      "role": "Member",
+      "game": "GTA 5 Online",
+      "discord": "fkjvbawsixgv",
+      "status": "Online",
+      "avatar": "",
+      "joined_at": "2026-10-12T16:31:24.054Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": 1791822662125,
+      "name": "kjfjvus",
+      "discord": "fkjvbawsixgv",
+      "age": 23,
+      "game": "GTA 5 Online",
+      "role": "Member",
+      "timezone": "chennai",
+      "about": "hi how are you dolly",
+      "status": "Approved",
+      "submitted_at": "2026-10-12T16:31:02.125Z"
+    }
+  ],
+  "messages": []
+}

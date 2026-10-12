@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join REAPERZ | Application Form</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="members.html">Members</a>
+      <a class="active" href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-admin-link" href="admin.html">Staff Portal</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="page-title">
+      <p class="eyebrow">APPLICATION PROCESS</p>
+      <h1>JOIN <span>REAPERZ</span></h1>
+      <p>Submit your application and become an official member of the Tamil gaming community.</p>
+    </section>
+
+    <section class="section form-section">
+      <form id="joinForm" class="form-card">
+        <div class="form-grid">
+          <label>
+            Full Name *
+            <input name="name" required placeholder="e.g. Arafath / Wolf">
+          </label>
+          <label>
+            Discord Username *
+            <input name="discord" required placeholder="e.g. username#0000 or username">
+          </label>
+          <label>
+            Age *
+            <input name="age" type="number" min="13" max="80" required placeholder="e.g. 20">
+          </label>
+          <label>
+            Primary Game *
+            <select name="game" required>
+              <option value="">Select Game</option>
+              <option value="FiveM">FiveM Roleplay</option>
+              <option value="GTA 5 Online">GTA 5 Online</option>
+              <option value="Both">Both (GTA 5 Online &amp; FiveM)</option>
+            </select>
+          </label>
+          <label>
+            Preferred Role
+            <select name="role">
+              <option value="Member">Community Member</option>
+              <option value="Police RP">Police / Law Enforcement RP</option>
+              <option value="EMS RP">EMS / Medical RP</option>
+              <option value="Mechanic RP">Mechanic RP</option>
+              <option value="Gang RP">Gang / Syndicate RP</option>
+              <option value="Streamer">Content Creator / Streamer</option>
+            </select>
+          </label>
+          <label>
+            Timezone / Location
+            <input name="timezone" placeholder="e.g. IST (Chennai / Tamil Nadu)">
+          </label>
+        </div>
+
+        <label>
+          About You &amp; Experience
+          <textarea name="about" rows="5" placeholder="Tell us about your gaming or RP background, why you want to join REAPERZ, and what you bring to the crew..."></textarea>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" required>
+          I agree to uphold the REAPERZ Community Rules, respect all members, and represent the crew honorably.
+        </label>
+
+        <button class="btn btn-primary" type="submit">SUBMIT APPLICATION</button>
+        <p id="joinMessage" class="form-message"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+      <p>Tamil GTA 5 Online &amp; FiveM Community</p>
+    </div>
+    <div class="footer-links">
+      <a href="members.html">Members</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Admin</a>
+    </div>
+    <p class="copyright">© 2026 REAPERZ. Built by REAPER ARAFATH. All rights reserved.</p>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/forms.js"></script>
+</body>
+</html>
