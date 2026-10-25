@@ -198,6 +198,11 @@
     discord_invite: "https://discord.gg/reaperz-tamil"
   };
 
+  const DEFAULT_PLATFORMS = [
+    { id: 1, type: 'fivem', name: 'NURP FiveM Roleplay', description: 'Tamil FiveM Roleplay server. Police, EMS, Mechanics, Gangs & more.', image_url: 'assets/images/gallery-1.jpg', connect_link: 'fivem://connect/nurp.fivem.com', discord_link: 'https://discord.gg/reaperz-tamil', is_active: true },
+    { id: 2, type: 'gta', name: 'GTA 5 Online Crew', description: 'Official REAPERZ Tamil GTA Online crew. Heists, car meets, races.', image_url: 'assets/images/gallery-2.jpg', connect_link: 'https://socialclub.rockstargames.com/crew/reaperz_tamil', discord_link: 'https://discord.gg/reaperz-tamil', is_active: true }
+  ];
+
   const DEFAULT_LIBRARY = [
     { id: 1, title: "FiveM Patrol & Convoy Meet", category: "FiveM RP", filename: "gallery-1.jpg", file_path: "assets/images/gallery-1.jpg", uploaded_by: "REAPER ARAFATH", uploaded_at: "2026-10-01T12:00:00Z" },
     { id: 2, title: "Los Santos Midnight Squad Run", category: "GTA 5 Online", filename: "gallery-2.jpg", file_path: "assets/images/gallery-2.jpg", uploaded_by: "WOLF", uploaded_at: "2026-10-02T15:30:00Z" },
@@ -360,17 +365,27 @@
     // =========================================================================
 
     async getMembers(search = '', role = '', department = '', status = '') {
-      const params = new URLSearchParams();
-      if (search) params.set('search', search);
-      if (role && role !== 'All') params.set('role', role);
-      if (department && department !== 'All') params.set('department', department);
-      if (status && status !== 'All') params.set('status', status);
-      const res = await fetch(`${this.apiBase}/api/members?${params.toString()}`);
-      const json = await res.json();
-      if (!res.ok || !json.success || !Array.isArray(json.members)) {
-        throw new Error(json.message || 'Could not load members from the database.');
+      try {
+        const params = new URLSearchParams();
+        if (search) params.set('search', search);
+        if (role && role !== 'All') params.set('role', role);
+        if (department && department !== 'All') params.set('department', department);
+        if (status && status !== 'All') params.set('status', status);
+        const res = await fetch(`${this.apiBase}/api/members?${params.toString()}`);
+        if (!res.ok) throw new Error('API unavailable');
+        const json = await res.json();
+        if (!json.success || !Array.isArray(json.members)) throw new Error('Bad response');
+        this.isApiOnline = true;
+        return json.members;
+      } catch (e) {
+        this.isApiOnline = false;
+        const stored = localStorage.getItem(STORAGE_KEYS.MEMBERS);
+        let members = stored ? JSON.parse(stored) : DEFAULT_MEMBERS;
+        if (search) members = members.filter(m => (m.name || '').toLowerCase().includes(search.toLowerCase()) || (m.discord || '').toLowerCase().includes(search.toLowerCase()));
+        if (role && role !== 'All') members = members.filter(m => m.role === role);
+        if (status && status !== 'All') members = members.filter(m => m.status === status);
+        return members;
       }
-      return json.members;
     }
 
     async getMember(id) {
@@ -441,15 +456,19 @@
     // =========================================================================
 
     async getHighlights(all = false) {
-      const token = this.getStaffToken();
-      const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const url = `${this.apiBase}/api/highlights${all ? '?all=1' : ''}`;
-      const res = await fetch(url, { headers });
-      const json = await res.json();
-      if (!res.ok || !json.success || !Array.isArray(json.highlights)) {
-        throw new Error(json.message || 'Could not load highlights from the database.');
+      try {
+        const token = this.getStaffToken();
+        const headers = token ? { Authorization: `Bearer ${token}` } : {};
+        const url = `${this.apiBase}/api/highlights${all ? '?all=1' : ''}`;
+        const res = await fetch(url, { headers });
+        if (!res.ok) throw new Error('API unavailable');
+        const json = await res.json();
+        if (!json.success || !Array.isArray(json.highlights)) throw new Error('Bad response');
+        return json.highlights;
+      } catch (e) {
+        const stored = localStorage.getItem(STORAGE_KEYS.HIGHLIGHTS);
+        return stored ? JSON.parse(stored) : (DEFAULT_HIGHLIGHTS || []);
       }
-      return json.highlights;
     }
 
     async addHighlight(highlightData) {
@@ -497,17 +516,21 @@
     // =========================================================================
 
     async getEvents(all = false, type = '') {
-      const token = this.getStaffToken();
-      const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const params = new URLSearchParams();
-      if (all) params.set('all', '1');
-      if (type) params.set('type', type);
-      const res = await fetch(`${this.apiBase}/api/events?${params.toString()}`, { headers });
-      const json = await res.json();
-      if (!res.ok || !json.success || !Array.isArray(json.events)) {
-        throw new Error(json.message || 'Could not load events from the database.');
+      try {
+        const token = this.getStaffToken();
+        const headers = token ? { Authorization: `Bearer ${token}` } : {};
+        const params = new URLSearchParams();
+        if (all) params.set('all', '1');
+        if (type) params.set('type', type);
+        const res = await fetch(`${this.apiBase}/api/events?${params.toString()}`, { headers });
+        if (!res.ok) throw new Error('API unavailable');
+        const json = await res.json();
+        if (!json.success || !Array.isArray(json.events)) throw new Error('Bad response');
+        return json.events;
+      } catch (e) {
+        const stored = localStorage.getItem(STORAGE_KEYS.EVENTS);
+        return stored ? JSON.parse(stored) : (DEFAULT_EVENTS || []);
       }
-      return json.events;
     }
 
     async addEvent(eventData) {
@@ -549,16 +572,20 @@
     // =========================================================================
 
     async getGamingPlatforms(all = false) {
-      const token = this.getStaffToken();
-      const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const url = `${this.apiBase}/api/gaming-platforms${all ? '?all=1' : ''}`;
-      const res = await fetch(url, { headers });
-      const json = await res.json();
-      if (!res.ok || !json.success || !Array.isArray(json.platforms)) {
-        throw new Error(json.message || 'Could not load gaming platforms from the database.');
+      try {
+        const token = this.getStaffToken();
+        const headers = token ? { Authorization: `Bearer ${token}` } : {};
+        const url = `${this.apiBase}/api/gaming-platforms${all ? '?all=1' : ''}`;
+        const res = await fetch(url, { headers });
+        if (!res.ok) throw new Error('API unavailable');
+        const json = await res.json();
+        if (!json.success || !Array.isArray(json.platforms)) throw new Error('Bad response');
+        this.isApiOnline = true;
+        return json.platforms;
+      } catch (e) {
+        this.isApiOnline = false;
+        return DEFAULT_PLATFORMS || [];
       }
-      this.isApiOnline = true;
-      return json.platforms;
     }
 
     async addGamingPlatform(platformData) {
@@ -618,10 +645,10 @@
             return json.settings;
           }
         }
-      } catch (e) {
-        throw new Error(`Could not load website settings: ${e.message}`);
-      }
-      throw new Error('Could not load website settings from the database.');
+      } catch (e) {}
+      // Fallback to localStorage or defaults (static hosting / offline)
+      const stored = localStorage.getItem(STORAGE_KEYS.SETTINGS);
+      return stored ? JSON.parse(stored) : DEFAULT_SETTINGS;
     }
 
     async updateSetting(keyOrObj, value) {
@@ -651,12 +678,23 @@
     }
 
     async getStats() {
-      const res = await fetch(`${this.apiBase}/api/stats`);
-      const json = await res.json();
-      if (!res.ok || !json.success || !json.stats) {
-        throw new Error(json.message || 'Could not load statistics from the database.');
+      try {
+        const res = await fetch(`${this.apiBase}/api/stats`);
+        if (!res.ok) throw new Error('API unavailable');
+        const json = await res.json();
+        if (!json.success || !json.stats) throw new Error('Bad response');
+        return json.stats;
+      } catch (e) {
+        // Return default stats when API is not available (static hosting)
+        const members = JSON.parse(localStorage.getItem(STORAGE_KEYS.MEMBERS) || 'null') || DEFAULT_MEMBERS || [];
+        const ratings = JSON.parse(localStorage.getItem(STORAGE_KEYS.RATINGS) || 'null') || DEFAULT_RATINGS || [];
+        return {
+          members: members.length || 0,
+          events: 0,
+          rating: ratings.length ? (ratings.reduce((s, r) => s + (r.stars || 5), 0) / ratings.length).toFixed(1) : '5.0',
+          library: 0
+        };
       }
-      return json.stats;
     }
 
     // =========================================================================
@@ -681,30 +719,46 @@
     // =========================================================================
 
     async getRatings(category = '', stars = '') {
-      const params = new URLSearchParams();
-      if (category && category !== 'All') params.set('category', category);
-      if (stars && stars !== 'All') params.set('stars', stars);
-      const res = await fetch(`${this.apiBase}/api/ratings?${params.toString()}`);
-      const json = await res.json();
-      if (!res.ok || !json.success || !Array.isArray(json.ratings)) {
-        throw new Error(json.message || 'Could not load ratings from the database.');
+      try {
+        const params = new URLSearchParams();
+        if (category && category !== 'All') params.set('category', category);
+        if (stars && stars !== 'All') params.set('stars', stars);
+        const res = await fetch(`${this.apiBase}/api/ratings?${params.toString()}`);
+        if (!res.ok) throw new Error('API unavailable');
+        const json = await res.json();
+        if (!json.success || !Array.isArray(json.ratings)) throw new Error('Bad response');
+        this.isApiOnline = true;
+        return json;
+      } catch (e) {
+        this.isApiOnline = false;
+        let ratings = JSON.parse(localStorage.getItem(STORAGE_KEYS.RATINGS) || 'null') || DEFAULT_RATINGS || [];
+        if (category && category !== 'All') ratings = ratings.filter(r => r.category === category);
+        if (stars && stars !== 'All') ratings = ratings.filter(r => r.stars === parseInt(stars));
+        return { success: true, ratings };
       }
-      this.isApiOnline = true;
-      return json;
     }
 
     async submitRating(ratingData) {
-      const res = await fetch(`${this.apiBase}/api/ratings`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(ratingData)
-      });
-      const json = await res.json();
-      if (!res.ok || !json.success) {
+      try {
+        const res = await fetch(`${this.apiBase}/api/ratings`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(ratingData)
+        });
+        const json = await res.json();
+        if (res.ok && json.success) {
+          this.isApiOnline = true;
+          return json;
+        }
         throw new Error(json.message || 'Server rejected rating submission.');
+      } catch (e) {
+        // Fallback: save rating to localStorage
+        const ratings = JSON.parse(localStorage.getItem(STORAGE_KEYS.RATINGS) || 'null') || DEFAULT_RATINGS.slice() || [];
+        const newRating = { ...ratingData, id: Date.now(), helpful: 0, submitted_at: new Date().toISOString() };
+        ratings.unshift(newRating);
+        localStorage.setItem(STORAGE_KEYS.RATINGS, JSON.stringify(ratings));
+        return { success: true, rating_id: newRating.id };
       }
-      this.isApiOnline = true;
-      return json;
     }
 
     async upvoteRating(id) {
@@ -740,16 +794,24 @@
     // =========================================================================
 
     async getLibraryMedia(category = '', search = '') {
-      const params = new URLSearchParams();
-      if (category && category !== 'All') params.set('category', category);
-      if (search) params.set('search', search);
-      const res = await fetch(`${this.apiBase}/api/library?${params.toString()}`);
-      const json = await res.json();
-      if (!res.ok || !json.success || !Array.isArray(json.media)) {
-        throw new Error(json.message || 'Could not load library media from the database.');
+      try {
+        const params = new URLSearchParams();
+        if (category && category !== 'All') params.set('category', category);
+        if (search) params.set('search', search);
+        const res = await fetch(`${this.apiBase}/api/library?${params.toString()}`);
+        if (!res.ok) throw new Error('API unavailable');
+        const json = await res.json();
+        if (!json.success || !Array.isArray(json.media)) throw new Error('Bad response');
+        this.isApiOnline = true;
+        return json;
+      } catch (e) {
+        this.isApiOnline = false;
+        // Fall back to built-in default library items
+        let media = DEFAULT_LIBRARY.slice();
+        if (category && category !== 'All') media = media.filter(m => m.category === category);
+        if (search) media = media.filter(m => (m.title || '').toLowerCase().includes(search.toLowerCase()));
+        return { success: true, media };
       }
-      this.isApiOnline = true;
-      return json;
     }
 
     async uploadLibraryMedia(uploadPayload) {

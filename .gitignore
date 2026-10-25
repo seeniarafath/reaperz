@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+
+# Server / Database (not needed for Netlify static hosting)
+server.js
+start-server.bat
+app.py
+db.py
+__pycache__/
+*.pyc
+
+# SQLite database (contains private data)
+data/reaperz.db
+data/db.json
+
+# Uploaded images (large files - host separately or use CDN)
+# assets/images/uploads/
+
+# Environment secrets
+.env
+.env.local
+.env.production
+
+# IDE / OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Backup folder
+Reaperz_BACKUP_*/

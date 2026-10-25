@@ -1,0 +1,31 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+
+# Serve all existing HTML pages as-is (no redirect needed for real pages)
+# Only redirect unknown paths to index.html so navigation doesn't 404
+[[redirects]]
+  from = "/businesses"
+  to = "/businesses.html"
+  status = 200
+
+[[redirects]]
+  from = "/apex-motors"
+  to = "/apex-motors.html"
+  status = 200
+
+[[redirects]]
+  from = "/hoonigan"
+  to = "/hoonigan.html"
+  status = 200
+
+[[redirects]]
+  from = "/apex-book"
+  to = "/apex-book.html"
+  status = 200
