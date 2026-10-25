@@ -178,6 +178,120 @@
   background: #199c59;
 }
 
+.gaming-admin-section {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #090e17;
+}
+
+.gaming-admin-section h4 {
+  color: #fff;
+  font: 700 16px 'Orbitron', sans-serif;
+}
+
+.gaming-admin-list {
+  display: grid;
+  gap: 12px;
+}
+
+.gaming-admin-server-list {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}
+
+.gaming-admin-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #1c2a40;
+  border-radius: 10px;
+  background: #0d1421;
+}
+
+.gaming-admin-card > img {
+  width: 88px;
+  height: 72px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border-radius: 7px;
+  background: #04060a;
+}
+
+.gaming-admin-card-content {
+  flex: 1;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.gaming-admin-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 7px;
+}
+
+.gaming-admin-card-heading h5 {
+  color: #fff;
+  font: 700 14px 'Orbitron', sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.gaming-order-label {
+  margin-left: 8px;
+  color: var(--blue2);
+}
+
+.gaming-admin-link {
+  margin-top: 4px;
+}
+
+.gaming-admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.gaming-platform-modal {
+  max-width: 640px;
+  max-height: min(90vh, 820px);
+  overflow-y: auto;
+}
+
+.gaming-platform-form {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.gaming-publish-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.gaming-publish-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue2);
+}
+
+.gaming-platform-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
 /* Modal styling */
 .modal-overlay {
   display: none;
@@ -235,4 +349,278 @@
   .admin-tabs {
     flex-wrap: wrap;
   }
+  .gaming-admin-section {
+    padding: 16px;
+  }
+  .gaming-admin-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .gaming-admin-card-content {
+    flex-basis: calc(100% - 104px);
+  }
+  .gaming-admin-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .gaming-platform-form-actions > button {
+    flex: 1;
+  }
+}
+
+
+/* ==========================================================================
+   ROLE MANAGEMENT & STAFF AUTHENTICATION GATE
+   ========================================================================== */
+
+.staff-session-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.staff-session-chip {
+  background: rgba(16, 34, 59, 0.7);
+  border: 1px solid var(--blue2);
+  color: #fff;
+  font: 700 11.5px 'Orbitron', sans-serif;
+  padding: 5px 12px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.staff-session-chip.founder {
+  border-color: var(--red);
+  background: rgba(255, 23, 68, 0.15);
+  color: #ff5277;
+  box-shadow: 0 0 14px rgba(255, 23, 68, 0.25);
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid #334d6e;
+  color: #a0b5d0;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font: 700 11px 'Orbitron', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(255, 23, 68, 0.1);
+}
+
+.staff-gate-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 5, 10, 0.96);
+  backdrop-filter: blur(14px);
+  z-index: 99999;
+  place-items: center;
+  padding: 20px;
+}
+
+.staff-gate-overlay.active {
+  display: grid;
+}
+
+.staff-gate-box {
+  background: #0d1522;
+  border: 1px solid #1c3352;
+  border-radius: 16px;
+  max-width: 480px;
+  width: 100%;
+  padding: 38px 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 183, 255, 0.15);
+  text-align: center;
+}
+
+.staff-gate-icon {
+  font-size: 46px;
+  margin-bottom: 14px;
+}
+
+.staff-gate-box h2 {
+  font: 800 24px 'Orbitron', sans-serif;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.staff-gate-box p {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.role-select {
+  background: #090f19;
+  color: #eef5ff;
+  border: 1px solid #203550;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font: 700 11.5px 'Orbitron', sans-serif;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.role-select:focus {
+  border-color: var(--blue2);
+  box-shadow: 0 0 10px rgba(0, 183, 255, 0.3);
+}
+
+.role-select.role-founder {
+  border-color: var(--red);
+  color: #ff5277;
+  background: rgba(255, 23, 68, 0.15);
+}
+
+.role-select.role-admin {
+  border-color: #c77dff;
+  color: #c77dff;
+  background: rgba(179, 0, 255, 0.15);
+}
+
+.role-select.role-moderator {
+  border-color: #56ccf2;
+  color: #56ccf2;
+  background: rgba(0, 183, 255, 0.15);
+}
+
+.role-select.role-member {
+  border-color: #314866;
+  color: #8da2be;
+  background: rgba(16, 27, 43, 0.5);
+}
+
+/* ==========================================================================
+   MEDIA LIBRARY UPLOAD & MANAGEMENT STYLES
+   ========================================================================== */
+
+.upload-dropzone {
+  border: 2px dashed #1c3552;
+  border-radius: 12px;
+  background: rgba(11, 18, 30, 0.6);
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 8px;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.dragover {
+  border-color: var(--blue2);
+  background: rgba(0, 183, 255, 0.08);
+  box-shadow: 0 0 20px rgba(0, 183, 255, 0.15);
+}
+
+.dropzone-prompt strong {
+  display: block;
+  font: 700 15px 'Orbitron', sans-serif;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.dropzone-preview {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+}
+
+.dropzone-preview img {
+  width: 110px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--blue2);
+  box-shadow: 0 0 12px rgba(0, 183, 255, 0.3);
+}
+
+.preview-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.preview-info strong {
+  color: #fff;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.preview-info span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.btn-remove-file {
+  background: none;
+  border: 1px solid #364e6f;
+  color: var(--blue2);
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 6px;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+
+.btn-remove-file:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.media-table-thumb {
+  width: 72px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #233958;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.media-table-thumb:hover {
+  transform: scale(1.08);
+  border-color: var(--blue2);
+}
+
+.media-cat-pill {
+  font: 700 11px 'Orbitron', sans-serif;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(0, 183, 255, 0.12);
+  color: var(--blue2);
+  border: 1px solid rgba(0, 183, 255, 0.25);
+  display: inline-block;
+}
+
+.member-table-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.member-table-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  background: #142236;
+  display: grid;
+  place-items: center;
+  font: 700 14px 'Orbitron', sans-serif;
+  color: #fff;
 }

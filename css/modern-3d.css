@@ -1,0 +1,434 @@
+/* ==========================================================================
+   REAPERZ COMMUNITY — NEXT-GEN 3D GAMING & MODERN GLASSMORPHISM DESIGN SYSTEM
+   Professional GTA V Online & FiveM Style
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL 3D LIGHTING, DEPTH & PERSPECTIVE
+   -------------------------------------------------------------------------- */
+:root {
+  --perspective-val: 1200px;
+  --glass-card-bg: rgba(13, 20, 33, 0.72);
+  --glass-card-border: rgba(0, 183, 255, 0.22);
+  --glass-card-inner: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 0 20px rgba(0, 183, 255, 0.04);
+  --3d-shadow-base: 0 12px 36px -4px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.5);
+  --3d-shadow-hover: 0 24px 60px -8px rgba(0, 0, 0, 0.85), 0 0 30px rgba(0, 183, 255, 0.35);
+  --neon-cyan-glow: 0 0 25px rgba(0, 183, 255, 0.45);
+  --neon-red-glow: 0 0 25px rgba(255, 23, 68, 0.45);
+}
+
+/* Ambient Cyber Grid Background Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 183, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 183, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body {
+  position: relative;
+  background-color: #030509 !important;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(0, 110, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(255, 23, 68, 0.08) 0%, transparent 40%) !important;
+  background-attachment: fixed !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. 3D GLASSMORPHISM HEADER & NAV
+   -------------------------------------------------------------------------- */
+.site-header {
+  background: rgba(4, 7, 14, 0.82) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(0, 183, 255, 0.22) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(0, 183, 255, 0.15) !important;
+}
+
+.logo span {
+  box-shadow: 0 0 30px rgba(0, 183, 255, 0.65), 0 4px 15px rgba(255, 23, 68, 0.45) !important;
+  transform: perspective(600px) rotateY(-8deg);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.logo:hover span {
+  transform: perspective(600px) rotateY(12deg) scale(1.08);
+  box-shadow: 0 0 40px rgba(0, 183, 255, 0.85);
+}
+
+nav#primaryNav a {
+  position: relative;
+  transition: all 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+nav#primaryNav a:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: rgba(0, 183, 255, 0.15) !important;
+  box-shadow: 0 4px 20px rgba(0, 183, 255, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   3. 3D INTERACTIVE CARDS (ALL SECTIONS)
+   -------------------------------------------------------------------------- */
+.card,
+.stat-card,
+.member-card,
+.gaming-platform-card,
+.event-card,
+.library-card,
+.review-card,
+.business-hub-card,
+.vehicle-card,
+.service-card {
+  background: var(--glass-card-bg) !important;
+  backdrop-filter: blur(16px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+  border: 1px solid var(--glass-card-border) !important;
+  box-shadow: var(--3d-shadow-base), var(--glass-card-inner) !important;
+  border-radius: 18px !important;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              border-color 0.35s ease !important;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Futuristic card top highlight line */
+.card::after,
+.member-card::after,
+.event-card::after,
+.library-card::after,
+.vehicle-card::after,
+.business-hub-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 183, 255, 0.8), transparent);
+  opacity: 0.6;
+  transition: opacity 0.3s ease, height 0.3s ease;
+  pointer-events: none;
+}
+
+/* 3D Depth Hover Response */
+.card:hover,
+.stat-card:hover,
+.member-card:hover,
+.gaming-platform-card:hover,
+.event-card:hover,
+.library-card:hover,
+.review-card:hover,
+.business-hub-card:hover,
+.vehicle-card:hover,
+.service-card:hover {
+  transform: translateY(-8px) scale(1.015) perspective(1000px) rotateX(2deg) !important;
+  border-color: rgba(0, 183, 255, 0.55) !important;
+  box-shadow: var(--3d-shadow-hover), var(--glass-card-inner) !important;
+}
+
+.card:hover::after,
+.member-card:hover::after,
+.event-card:hover::after,
+.library-card:hover::after,
+.vehicle-card:hover::after,
+.business-hub-card:hover::after {
+  opacity: 1;
+  height: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   4. 3:4 PORTRAIT IMAGE CARDS (REQUIREMENT 2 SPEC)
+   Desktop: 3-4 per row, Tablet: 2 per row, Mobile: 1 per row
+   -------------------------------------------------------------------------- */
+.gallery-grid,
+#communityHighlightsGrid,
+.library-grid,
+.events-grid,
+.gaming-platform-list {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  align-items: stretch !important;
+}
+
+@media (max-width: 1200px) {
+  .gallery-grid,
+  #communityHighlightsGrid,
+  .library-grid,
+  .events-grid,
+  .gaming-platform-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 820px) {
+  .gallery-grid,
+  #communityHighlightsGrid,
+  .library-grid,
+  .events-grid,
+  .gaming-platform-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .gallery-grid,
+  #communityHighlightsGrid,
+  .library-grid,
+  .events-grid,
+  .gaming-platform-list {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+/* Base Card structure for all image-based sections */
+.gallery-item,
+.library-card,
+.event-card,
+.gaming-platform-card,
+.highlight-card-3d {
+  background: var(--glass-card-bg) !important;
+  border: 1px solid var(--glass-card-border) !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: var(--3d-shadow-base), var(--glass-card-inner) !important;
+  backdrop-filter: blur(14px) !important;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              border-color 0.35s ease !important;
+  transform-style: preserve-3d !important;
+}
+
+/* Image Wrappers strictly 3:4 ratio */
+.gallery-image-wrap,
+.library-card-img-wrap,
+.event-image-wrap,
+.gaming-platform-image,
+.highlight-card-img-wrap {
+  position: relative !important;
+  width: 100% !important;
+  aspect-ratio: 3 / 4 !important;
+  height: auto !important;
+  overflow: hidden !important;
+  background: #060a12 !important;
+  flex: 0 0 auto !important;
+}
+
+/* STRICT IMAGE FORMATTING: object-fit: cover, no stretch, no distortion */
+.gallery-image-wrap img,
+.library-card-img-wrap img,
+.event-image-wrap img,
+.event-image,
+.gaming-platform-image img,
+.highlight-card-img-wrap img {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 3 / 4 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+/* Smooth 3D zoom & depth on hover */
+.gallery-item:hover .gallery-image-wrap img,
+.library-card:hover .library-card-img-wrap img,
+.event-card:hover .event-image-wrap img,
+.event-card:hover .event-image,
+.gaming-platform-card:hover .gaming-platform-image img,
+.highlight-card-3d:hover .highlight-card-img-wrap img {
+  transform: scale(1.08) !important;
+}
+
+/* Card Body Section below 3:4 image */
+.gallery-card-body,
+.library-card-body,
+.event-body,
+.gaming-platform-card-body,
+.highlight-card-body {
+  padding: 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  background: rgba(10, 16, 26, 0.85) !important;
+  border-top: 1px solid rgba(0, 183, 255, 0.12) !important;
+}
+
+.gallery-caption,
+.library-card-title,
+.event-title,
+.highlight-card-title {
+  font: 700 15px 'Orbitron', sans-serif !important;
+  color: #fff !important;
+  margin-bottom: 8px !important;
+  line-height: 1.35 !important;
+}
+
+.gallery-description,
+.library-card-desc,
+.event-desc,
+.highlight-card-desc {
+  font-size: 13px !important;
+  color: #8e9fb5 !important;
+  line-height: 1.55 !important;
+  flex: 1 1 auto !important;
+  margin-bottom: 12px !important;
+}
+
+.gallery-date,
+.library-card-date,
+.event-date {
+  font: 600 11px 'Orbitron', sans-serif !important;
+  color: var(--blue2) !important;
+  letter-spacing: 0.8px !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. 3D GLOW BUTTONS WITH MICRO-ANIMATIONS
+   -------------------------------------------------------------------------- */
+.btn {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  letter-spacing: 1px !important;
+  transform-style: preserve-3d !important;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  left: 150%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0088ff 0%, #0050c8 100%) !important;
+  border: 1px solid rgba(0, 183, 255, 0.45) !important;
+  box-shadow: 0 6px 22px rgba(0, 110, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 12px 32px rgba(0, 110, 255, 0.65), 0 0 20px rgba(0, 183, 255, 0.5) !important;
+}
+
+.btn-outline {
+  background: rgba(14, 21, 34, 0.6) !important;
+  border: 1px solid rgba(0, 183, 255, 0.35) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+.btn-outline:hover {
+  background: rgba(0, 183, 255, 0.15) !important;
+  border-color: rgba(0, 183, 255, 0.7) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(0, 183, 255, 0.35) !important;
+  color: #fff !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. 3D HERO SECTION FLOATING DEPTH
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative !important;
+}
+
+.hero-content {
+  perspective: 1000px;
+}
+
+.hero h1 {
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 183, 255, 0.2) !important;
+}
+
+.hero h1 span {
+  text-shadow: 0 0 35px rgba(255, 23, 68, 0.6) !important;
+  animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 20px rgba(255, 23, 68, 0.4); }
+  100% { text-shadow: 0 0 45px rgba(255, 23, 68, 0.8); }
+}
+
+.stats > div {
+  background: rgba(13, 20, 33, 0.65) !important;
+  border: 1px solid rgba(0, 183, 255, 0.2) !important;
+  border-radius: 14px !important;
+  padding: 16px 24px !important;
+  backdrop-filter: blur(14px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  transition: transform 0.3s ease, border-color 0.3s ease !important;
+}
+
+.stats > div:hover {
+  transform: translateY(-4px) scale(1.05) !important;
+  border-color: rgba(0, 183, 255, 0.5) !important;
+  box-shadow: 0 12px 30px rgba(0, 183, 255, 0.25) !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. FORM CONTROLS & MODERN INPUTS
+   -------------------------------------------------------------------------- */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="password"],
+input[type="search"],
+select,
+textarea {
+  background: rgba(9, 14, 24, 0.85) !important;
+  border: 1px solid rgba(0, 183, 255, 0.22) !important;
+  border-radius: 12px !important;
+  color: #eef5ff !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.25s ease !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(0, 183, 255, 0.7) !important;
+  box-shadow: 0 0 0 3px rgba(0, 183, 255, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  background: rgba(12, 18, 32, 0.95) !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. FOOTER REFINEMENT
+   -------------------------------------------------------------------------- */
+footer {
+  border-top: 1px solid rgba(0, 183, 255, 0.18) !important;
+  background: rgba(4, 6, 12, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  position: relative;
+  z-index: 10;
+}

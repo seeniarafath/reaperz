@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Upcoming tournaments, community campaigns, and completed REAPERZ gaming events.">
+  <title>Tournaments &amp; Events | REAPERZ</title>
+  <link rel="stylesheet" href="css/style.css?v=20261025-v2">
+  <link rel="stylesheet" href="css/modern-3d.css?v=20261025-v2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page events-page">
+  <header class="site-header">
+    <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+    <nav id="primaryNav" aria-label="Main Navigation">
+      <button class="nav-close-btn" id="navCloseBtn" aria-label="Close navigation menu">✕</button>
+      <a href="index.html">Home</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="members.html">Members</a>
+      <a class="active" href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-admin-link" href="admin.html"><span class="lock-icon">🔒</span> Staff Portal</a>
+    </nav>
+  </header>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <main class="page">
+    <section class="events-hero">
+      <p class="events-hero-kicker">UPCOMING EVENTS</p>
+      <h1>EVENTS</h1>
+      <p>NURP <span>•</span> TOURNAMENTS &amp; EVENTS</p>
+      <div class="events-hero-divider" aria-hidden="true"></div>
+    </section>
+
+    <section class="section events-content">
+      <div class="events-filter-bar" role="group" aria-label="Filter event sections">
+        <button type="button" class="filter-btn active" data-filter="all">ALL EVENTS</button>
+        <button type="button" class="filter-btn" data-filter="upcoming">ACTIVE CAMPAIGNS</button>
+        <button type="button" class="filter-btn" data-filter="past">COMPLETED</button>
+      </div>
+      <section class="events-group" id="upcomingEventsGroup" aria-labelledby="activeEventsTitle">
+        <div class="events-section-header">
+          <span class="events-section-tag">INCOMING</span>
+          <h2 id="activeEventsTitle">ACTIVE CAMPAIGNS</h2>
+        </div>
+        <div class="events-grid" id="upcomingEventsGrid" aria-live="polite">
+          <div class="no-events">Loading upcoming events...</div>
+        </div>
+      </section>
+
+      <section class="events-group completed-events-group" id="pastEventsGroup" aria-labelledby="completedEventsTitle">
+        <div class="events-section-header events-completed-heading">
+          <div>
+            <span class="events-section-tag completed-tag">COMPLETED</span>
+            <h2 id="completedEventsTitle">COMPLETED EVENTS</h2>
+          </div>
+          <label class="events-year-filter">
+            <span class="sr-only">Filter completed events by year</span>
+            <select id="completedYearFilter" aria-label="Filter completed events by year">
+              <option value="all">All years</option>
+            </select>
+          </label>
+        </div>
+        <div class="events-grid" id="pastEventsGrid" aria-live="polite">
+          <div class="no-events">Loading completed events...</div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+      <p>Tamil GTA 5 Online &amp; FiveM Community</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Staff Portal</a>
+    </div>
+    <p class="copyright">© 2026 REAPERZ Tamil Gaming Community. All rights reserved.</p>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/main.js?v=20261015-events-gold"></script>
+  <script src="js/events.js?v=20261015-events-gold-2"></script>
+</body>
+</html>

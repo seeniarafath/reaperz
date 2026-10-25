@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="REAPERZ Media Library — Official screenshots, car meet highlights, FiveM roleplay operations, and community captures.">
+  <title>Media Library | REAPERZ — Tamil GTA V & FiveM Community</title>
+  <link rel="stylesheet" href="css/style.css?v=20261025-v2">
+  <link rel="stylesheet" href="css/modern-3d.css?v=20261025-v2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a class="active" href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-admin-link" href="admin.html">Staff Portal</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- PAGE TITLE HEADER -->
+    <section class="page-title">
+      <p class="eyebrow">COMMUNITY VAULT • GTA V &amp; FIVEM MEDIA</p>
+      <h1>MEDIA <span>LIBRARY</span></h1>
+      <p>High-octane roleplay captures, underground car meets, convoy operations, and heist highlights.</p>
+    </section>
+
+    <!-- SECTION: TOOLBAR & MEDIA GRID -->
+    <section class="section">
+      <!-- SEARCH & FILTER TOOLBAR -->
+      <div class="library-toolbar">
+        <div class="library-search-box">
+          <input id="librarySearch" type="search" placeholder="Search captures by title, division, or keyword...">
+        </div>
+
+        <!-- CATEGORY FILTER PILLS -->
+        <div class="library-filter-pills" id="libraryFilterPills">
+          <button class="filter-btn active" data-category="All">All Media</button>
+          <button class="filter-btn" data-category="FiveM RP">FiveM RP</button>
+          <button class="filter-btn" data-category="GTA 5 Online">GTA 5 Online</button>
+          <button class="filter-btn" data-category="Car Meets">Car Meets</button>
+          <button class="filter-btn" data-category="Heist Operations">Heist Operations</button>
+          <button class="filter-btn" data-category="Crew Convoys">Crew Convoys</button>
+        </div>
+
+        <div class="library-stats-count" id="libraryCountDisplay">
+          Loading media...
+        </div>
+      </div>
+
+      <!-- DYNAMIC MEDIA GRID -->
+      <div class="library-grid" id="libraryGrid">
+        <!-- Rendered dynamically by js/library.js -->
+        <div class="no-members" style="grid-column: 1 / -1;">
+          Loading REAPERZ media archive...
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer>
+    <div>
+      <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+      <p>Tamil GTA 5 Online &amp; FiveM Community</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Admin</a>
+    </div>
+    <p class="copyright">© 2026 REAPERZ. Built by REAPER ARAFATH. All rights reserved.</p>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/main.js?v=20261015-1634"></script>
+  <script src="js/library.js?v=20261015-1634-3x4"></script>
+</body>
+</html>

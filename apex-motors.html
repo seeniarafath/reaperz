@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="APEX MOTORS — Official Eclipse FiveM Vehicle Dealership. High performance sports cars, supercars, SUVs with instant pre-booking.">
+  <title>Apex Motors | FiveM Dealership • Eclipse | REAPERZ</title>
+  <link rel="stylesheet" href="css/style.css?v=20261025-biz">
+  <link rel="stylesheet" href="css/business.css?v=20261025-biz">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+    <nav id="primaryNav" aria-label="Main Navigation">
+      <button class="nav-close-btn" id="navCloseBtn" aria-label="Close navigation menu">✕</button>
+      <a href="index.html">Home</a>
+      <a class="active" href="businesses.html">Businesses</a>
+      <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-admin-link" href="admin.html"><span class="lock-icon">🔒</span> Staff Portal</a>
+    </nav>
+  </header>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="apex-hero">
+      <div class="apex-hero-content">
+        <div class="apex-logo-badge">
+          <div class="apex-logo-icon">🏎️</div>
+          <div class="apex-logo-text">
+            <strong>APEX MOTORS</strong>
+            <span>ECLIPSE SERVER • LOS SANTOS</span>
+          </div>
+        </div>
+        <h1>LUXURY &amp; <span>SPEED</span></h1>
+        <p class="hero-text">The premier vehicle showroom on the Eclipse FiveM server. Hand-crafted precision, exotic supercars, track-ready racers, and bespoke luxury vehicles with official registration handover.</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#fleet-section">EXPLORE FLEET</a>
+          <a class="btn btn-outline" href="apex-book.html">ONLINE PRE-BOOKING</a>
+          <a class="btn btn-outline" href="businesses.html">← ALL BUSINESSES</a>
+        </div>
+        <div class="apex-hero-stats">
+          <div class="apex-hero-stat">
+            <strong id="statFleetTotal">6</strong>
+            <small>Showroom Vehicles</small>
+          </div>
+          <div class="apex-hero-stat">
+            <strong id="statFleetAvail" style="color:var(--green);">5</strong>
+            <small>Ready for Delivery</small>
+          </div>
+          <div class="apex-hero-stat">
+            <strong>Postal 8156</strong>
+            <small>Handover Facility</small>
+          </div>
+          <div class="apex-hero-stat">
+            <strong style="color:var(--blue2);">100%</strong>
+            <small>Discord Verification</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VEHICLES SHOWROOM SECTION -->
+    <section class="section" id="fleet-section">
+      <div class="section-heading">
+        <p class="eyebrow">SHOWROOM FLOOR • ECLIPSE</p>
+        <h2>AVAILABLE <span>VEHICLES</span></h2>
+        <p style="color:#8e9fb5; max-width:600px; margin: 8px auto 0;">Click on any vehicle to view specifications or pre-book online for quick in-city delivery.</p>
+      </div>
+
+      <!-- FILTER BAR -->
+      <div class="vehicle-filter-bar" id="vehicleFilterBar">
+        <button type="button" class="filter-btn active" data-category="all">ALL CLASSES</button>
+        <button type="button" class="filter-btn" data-category="sports">SPORTS</button>
+        <button type="button" class="filter-btn" data-category="supercar">SUPERCAR</button>
+        <button type="button" class="filter-btn" data-category="suv">SUV</button>
+        <button type="button" class="filter-btn" data-category="luxury">LUXURY</button>
+        <button type="button" class="filter-btn" data-category="muscle">MUSCLE</button>
+        <button type="button" class="filter-btn" data-category="race">RACE</button>
+      </div>
+
+      <!-- VEHICLE GRID -->
+      <div class="vehicles-grid" id="vehiclesGrid" aria-live="polite">
+        <div class="biz-loading" style="grid-column: 1 / -1;">
+          <div class="biz-spinner"></div>
+          <span>Loading Apex Motors showroom fleet...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VEHICLE DETAILS MODAL -->
+    <div class="vehicle-modal-overlay" id="vehicleModalOverlay" aria-hidden="true">
+      <div class="vehicle-modal" role="dialog" aria-modal="true" aria-labelledby="modalVehicleName">
+        <div id="modalVehicleImageWrap"></div>
+        <div class="vehicle-modal-body">
+          <div class="vehicle-modal-header">
+            <div>
+              <span id="modalVehicleCategory" class="vehicle-card-category" style="position:static; display:inline-block; margin-bottom:8px;">SPORTS</span>
+              <h2 class="vehicle-modal-title" id="modalVehicleName">Vehicle Name</h2>
+              <p id="modalVehicleModel" style="color:#8e9fb5; font-size:13px; text-transform:uppercase; letter-spacing:1px; margin-top:4px;">MODEL</p>
+            </div>
+            <button type="button" class="vehicle-modal-close" id="modalCloseBtn" aria-label="Close dialog">✕</button>
+          </div>
+
+          <div class="vehicle-modal-price-row">
+            <div>
+              <span style="font-size:12px; color:#8e9fb5; text-transform:uppercase; letter-spacing:1px; display:block;">Showroom Price</span>
+              <span class="vehicle-modal-price" id="modalVehiclePrice">$0</span>
+            </div>
+            <div id="modalVehicleAvailBadge"></div>
+          </div>
+
+          <p class="vehicle-modal-desc" id="modalVehicleDesc"></p>
+
+          <h4 style="font:700 13px 'Orbitron',sans-serif; color:var(--blue2); letter-spacing:1.5px; margin-bottom:12px; text-transform:uppercase;">PERFORMANCE &amp; SPECS</h4>
+          <div class="vehicle-modal-specs-grid" id="modalVehicleSpecs"></div>
+
+          <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="#" class="btn-prebook" id="modalPrebookBtn" style="padding:14px 28px; font-size:13px;">PROCEED TO PRE-BOOK →</a>
+            <button type="button" class="btn btn-outline" id="modalCloseBtn2">CLOSE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+      <p>Tamil GTA 5 Online &amp; FiveM Community</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Staff Portal</a>
+    </div>
+    <p class="copyright">© 2026 REAPERZ Tamil Gaming Community. All rights reserved.</p>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/main.js?v=20261025-biz"></script>
+  <script>
+    // Apex Motors Client Logic
+    (function() {
+      let allVehicles = [];
+      let activeCategory = 'all';
+
+      const grid = document.getElementById('vehiclesGrid');
+      const filterBar = document.getElementById('vehicleFilterBar');
+      const modal = document.getElementById('vehicleModalOverlay');
+      const modalClose = document.getElementById('modalCloseBtn');
+      const modalClose2 = document.getElementById('modalCloseBtn2');
+
+      function escapeHTML(str) {
+        return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function formatPrice(n) {
+        return '$' + Number(n || 0).toLocaleString();
+      }
+
+      function renderGrid() {
+        if (!grid) return;
+        const filtered = activeCategory === 'all'
+          ? allVehicles
+          : allVehicles.filter(v => (v.category || '').toLowerCase() === activeCategory.toLowerCase());
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '<div class="biz-empty" style="grid-column: 1 / -1;"><div class="biz-empty-icon">🏎️</div><h3>No vehicles found</h3><p>There are no vehicles listed in this category right now.</p></div>';
+          return;
+        }
+
+        grid.innerHTML = filtered.map(v => {
+          const avail = (v.availability || 'Available').toLowerCase();
+          const isAvail = avail === 'available';
+          const defaultImg = 'assets/images/gallery-3.jpg';
+          const imgSrc = v.image_url ? escapeHTML(v.image_url) : defaultImg;
+
+          let specs = v.specs;
+          if (typeof specs === 'string') {
+            try { specs = JSON.parse(specs); } catch(e) { specs = {}; }
+          }
+          specs = specs || {};
+
+          return `
+            <article class="vehicle-card" data-id="${v.id}">
+              <div class="vehicle-card-image-wrap">
+                <span class="vehicle-card-category">${escapeHTML(v.category || 'Sports')}</span>
+                <span class="vehicle-card-availability ${avail}">${escapeHTML(v.availability || 'Available')}</span>
+                <img class="vehicle-card-image" src="${imgSrc}" alt="${escapeHTML(v.name)}" loading="lazy" onerror="this.onerror=null;this.src='${defaultImg}';">
+              </div>
+              <div class="vehicle-card-body">
+                <h3 class="vehicle-card-name">${escapeHTML(v.name)}</h3>
+                <div class="vehicle-card-model">${escapeHTML(v.model)}</div>
+                <div class="vehicle-card-price">${formatPrice(v.price)}</div>
+
+                <div class="vehicle-card-specs">
+                  <div class="vehicle-spec-item">
+                    <span class="vehicle-spec-label">Top Speed</span>
+                    <span class="vehicle-spec-value">${escapeHTML(specs.top_speed || '200+ mph')}</span>
+                  </div>
+                  <div class="vehicle-spec-item">
+                    <span class="vehicle-spec-label">Drivetrain</span>
+                    <span class="vehicle-spec-value">${escapeHTML(specs.drive || 'AWD/RWD')}</span>
+                  </div>
+                </div>
+
+                <div class="vehicle-card-actions">
+                  <a href="apex-book.html?vehicle_id=${v.id}" class="btn-prebook ${isAvail ? '' : 'disabled'}" ${isAvail ? '' : 'tabindex="-1"'}>
+                    ${isAvail ? 'PRE-BOOK' : v.availability.toUpperCase()}
+                  </a>
+                  <button type="button" class="btn-details-sm view-details-btn" data-id="${v.id}" title="View Details">🔍</button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      function openModal(vehicle) {
+        if (!vehicle) return;
+        document.getElementById('modalVehicleName').textContent = vehicle.name;
+        document.getElementById('modalVehicleModel').textContent = 'MODEL: ' + (vehicle.model || 'N/A');
+        document.getElementById('modalVehicleCategory').textContent = (vehicle.category || 'Sports').toUpperCase();
+        document.getElementById('modalVehiclePrice').textContent = formatPrice(vehicle.price);
+        document.getElementById('modalVehicleDesc').textContent = vehicle.description || 'Exclusive luxury vehicle tuned for speed, handling, and prestigious presence in Los Santos.';
+
+        const avail = (vehicle.availability || 'Available').toLowerCase();
+        const badge = document.getElementById('modalVehicleAvailBadge');
+        badge.innerHTML = `<span class="vehicle-card-availability ${avail}" style="position:static;">${escapeHTML(vehicle.availability)}</span>`;
+
+        const prebookBtn = document.getElementById('modalPrebookBtn');
+        prebookBtn.href = `apex-book.html?vehicle_id=${vehicle.id}`;
+        if (avail !== 'available') {
+          prebookBtn.classList.add('disabled');
+          prebookBtn.textContent = 'CURRENTLY ' + vehicle.availability.toUpperCase();
+        } else {
+          prebookBtn.classList.remove('disabled');
+          prebookBtn.textContent = 'PROCEED TO PRE-BOOK →';
+        }
+
+        let specs = vehicle.specs;
+        if (typeof specs === 'string') {
+          try { specs = JSON.parse(specs); } catch(e) { specs = {}; }
+        }
+        specs = specs || {};
+
+        const specsGrid = document.getElementById('modalVehicleSpecs');
+        specsGrid.innerHTML = Object.entries(specs).map(([k, v]) => `
+          <div class="vehicle-modal-spec">
+            <div class="vehicle-modal-spec-label">${escapeHTML(k.replace(/_/g, ' '))}</div>
+            <div class="vehicle-modal-spec-value">${escapeHTML(v)}</div>
+          </div>
+        `).join('') || '<div class="vehicle-modal-spec"><div class="vehicle-modal-spec-label">Class</div><div class="vehicle-modal-spec-value">Standard Spec</div></div>';
+
+        const defaultImg = 'assets/images/gallery-3.jpg';
+        const imgSrc = vehicle.image_url ? escapeHTML(vehicle.image_url) : defaultImg;
+        document.getElementById('modalVehicleImageWrap').innerHTML = `
+          <img class="vehicle-modal-image" src="${imgSrc}" alt="${escapeHTML(vehicle.name)}" onerror="this.onerror=null;this.src='${defaultImg}';">
+        `;
+
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      // Filter clicks
+      filterBar?.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCategory = btn.dataset.category || 'all';
+        renderGrid();
+      });
+
+      // Grid clicks
+      grid?.addEventListener('click', (e) => {
+        const btn = e.target.closest('.view-details-btn');
+        if (!btn) return;
+        const id = parseInt(btn.dataset.id, 10);
+        const vehicle = allVehicles.find(v => v.id === id);
+        openModal(vehicle);
+      });
+
+      modalClose?.addEventListener('click', closeModal);
+      modalClose2?.addEventListener('click', closeModal);
+      modal?.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // Load vehicles
+      async function loadVehicles() {
+        try {
+          const res = await fetch('/api/vehicles');
+          const data = await res.json();
+          if (data.success && data.vehicles) {
+            allVehicles = data.vehicles;
+            const availCount = allVehicles.filter(v => (v.availability||'').toLowerCase() === 'available').length;
+            const tEl = document.getElementById('statFleetTotal');
+            const aEl = document.getElementById('statFleetAvail');
+            if (tEl) tEl.textContent = allVehicles.length;
+            if (aEl) aEl.textContent = availCount;
+            renderGrid();
+          }
+        } catch(err) {
+          console.error('[Apex Motors] Failed to load vehicles:', err);
+          if (grid) grid.innerHTML = '<div class="biz-empty" style="grid-column: 1 / -1;"><h3>Failed to load vehicles</h3><p>Please refresh the page.</p></div>';
+        }
+      }
+
+      loadVehicles();
+    })();
+  </script>
+</body>
+</html>

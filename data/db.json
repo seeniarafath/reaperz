@@ -6,9 +6,12 @@
       "role": "Founder",
       "game": "GTA V / FiveM",
       "discord": "arafath",
+      "discord_id": "912345678901234560",
       "status": "Online",
       "avatar": "",
-      "joined_at": "2026-01-01T00:00:00Z"
+      "department": "Founder",
+      "details": "",
+      "joined_at": "2026-01-01"
     },
     {
       "id": 2,
@@ -16,8 +19,11 @@
       "role": "Admin",
       "game": "FiveM",
       "discord": "wolf",
+      "discord_id": "912345678901234561",
       "status": "Online",
       "avatar": "",
+      "department": "Community",
+      "details": "",
       "joined_at": "2026-01-15T00:00:00Z"
     },
     {
@@ -26,8 +32,11 @@
       "role": "Moderator",
       "game": "GTA V Online",
       "discord": "shadow",
-      "status": "Offline",
+      "discord_id": "912345678901234562",
+      "status": "Idle",
       "avatar": "",
+      "department": "Community",
+      "details": "",
       "joined_at": "2026-02-01T00:00:00Z"
     },
     {
@@ -36,8 +45,11 @@
       "role": "Moderator",
       "game": "FiveM",
       "discord": "king",
-      "status": "Online",
+      "discord_id": "912345678901234563",
+      "status": "Do Not Disturb",
       "avatar": "",
+      "department": "Community",
+      "details": "",
       "joined_at": "2026-02-10T00:00:00Z"
     },
     {
@@ -46,8 +58,11 @@
       "role": "Member",
       "game": "GTA V Online",
       "discord": "vikram",
+      "discord_id": "912345678901234564",
       "status": "Online",
       "avatar": "",
+      "department": "Community",
+      "details": "",
       "joined_at": "2026-03-01T00:00:00Z"
     },
     {
@@ -56,8 +71,11 @@
       "role": "Member",
       "game": "FiveM",
       "discord": "suriya",
+      "discord_id": "912345678901234565",
       "status": "Online",
       "avatar": "",
+      "department": "Community",
+      "details": "",
       "joined_at": "2026-03-05T00:00:00Z"
     },
     {
@@ -66,44 +84,366 @@
       "role": "Member",
       "game": "GTA V Online",
       "discord": "raj",
-      "status": "Online",
+      "discord_id": "912345678901234566",
+      "status": "Offline",
       "avatar": "",
+      "department": "Community",
+      "details": "",
       "joined_at": "2026-03-12T00:00:00Z"
     },
     {
-      "id": 8,
-      "name": "KARTHI",
+      "id": 9,
+      "name": "Dinesh Kumar",
       "role": "Member",
       "game": "FiveM",
-      "discord": "karthi",
+      "discord": "dinesh_gta#1234",
+      "discord_id": "",
       "status": "Online",
       "avatar": "",
-      "joined_at": "2026-03-20T00:00:00Z"
+      "department": "Community",
+      "details": "",
+      "joined_at": "2026-10-13T18:02:36.864Z"
     },
     {
-      "id": 1791822684054,
-      "name": "kjfjvus",
-      "role": "Member",
-      "game": "GTA 5 Online",
-      "discord": "fkjvbawsixgv",
+      "id": 11,
+      "name": "Dark",
+      "role": "Founder",
+      "game": "GTA V / FiveM",
+      "discord": "rpz_dark",
+      "discord_id": "937289791429562398",
+      "status": "Online",
+      "avatar": "https://cdn.discordapp.com/avatars/937289791429562398/9970cd81f120a25115493cc9ed04a777.png?size=4096&ignore=true",
+      "department": "Command",
+      "details": "Community Founder & Head of Operations",
+      "joined_at": "2026-10-13T18:14:28.568Z"
+    },
+    {
+      "id": 12,
+      "name": "Beast Boy",
+      "role": "Developer",
+      "game": "GTA V / FiveM",
+      "discord": "beastboy",
+      "discord_id": "912345678901234568",
       "status": "Online",
       "avatar": "",
-      "joined_at": "2026-10-12T16:31:24.054Z"
+      "department": "Development",
+      "details": "Lead Website & Systems Developer",
+      "joined_at": "2026-01-10T00:00:00Z"
     }
   ],
   "applications": [
     {
-      "id": 1791822662125,
-      "name": "kjfjvus",
-      "discord": "fkjvbawsixgv",
-      "age": 23,
-      "game": "GTA 5 Online",
+      "id": 4,
+      "name": "Dark",
+      "discord": "937289791429562398",
+      "age": 21,
+      "game": "Both",
       "role": "Member",
-      "timezone": "chennai",
-      "about": "hi how are you dolly",
+      "timezone": "tamilnadu",
+      "about": "",
+      "status": "Pending",
+      "submitted_at": "2026-10-21T14:07:21.473Z"
+    },
+    {
+      "id": 3,
+      "name": "Dark",
+      "discord": "937289791429562398",
+      "age": 21,
+      "game": "Both",
+      "role": "Member",
+      "timezone": "tamilnadu",
+      "about": "fgerg",
+      "status": "Rejected",
+      "submitted_at": "2026-10-14T15:48:37.200Z"
+    },
+    {
+      "id": 2,
+      "name": "Dark",
+      "discord": "937289791429562398",
+      "age": 21,
+      "game": "Both",
+      "role": "Member",
+      "timezone": "tamilnadu",
+      "about": "",
       "status": "Approved",
-      "submitted_at": "2026-10-12T16:31:02.125Z"
+      "submitted_at": "2026-10-13T18:10:15.925Z"
+    },
+    {
+      "id": 1,
+      "name": "Dinesh Kumar",
+      "discord": "dinesh_gta#1234",
+      "age": 21,
+      "game": "FiveM",
+      "role": "Police RP",
+      "timezone": "IST (Tamil Nadu)",
+      "about": "Experienced in FiveM Tamil servers for 2 years. Looking for a serious and fun roleplay community with REAPERZ.",
+      "status": "Approved",
+      "submitted_at": "2026-10-12T19:30:00Z"
     }
   ],
-  "messages": []
+  "messages": [
+    {
+      "id": 2,
+      "name": "Beast",
+      "email": "arafathmeera3@gmail.com",
+      "subject": "vhusd",
+      "message": "staergrerht",
+      "submitted_at": "2026-10-14T15:49:17.867Z"
+    },
+    {
+      "id": 1,
+      "name": "Beast",
+      "email": "arafathmeera3@gmail.com",
+      "subject": "vhusd",
+      "message": "sdfd",
+      "submitted_at": "2026-10-13T18:01:45.459Z"
+    }
+  ],
+  "ratings": [
+    {
+      "id": 5,
+      "name": "Praveen Raj",
+      "discord": "praveen_gta#5589",
+      "stars": 4,
+      "category": "FiveM Roleplay",
+      "experience": "New Recruit",
+      "title": "Solid Community with Active Leadership",
+      "comment": "Very active Discord, clear community rules, and regular server events. The admins guided me through setting up FiveM mods quickly.",
+      "recommended": true,
+      "helpful": 8,
+      "submitted_at": "2026-10-12T17:30:00Z"
+    },
+    {
+      "id": 4,
+      "name": "Mohamed Irfan",
+      "discord": "irfan_reaper#3321",
+      "stars": 5,
+      "category": "Community & Atmosphere",
+      "experience": "6+ Months",
+      "title": "Zero Toxicity & True Tamil Brotherhood",
+      "comment": "Whether you are a beginner or a veteran player, everyone treats you with respect. Staff members SHADOW and WOLF are always helpful on voice calls.",
+      "recommended": true,
+      "helpful": 9,
+      "submitted_at": "2026-10-12T12:05:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Vignesh V",
+      "discord": "vicky_racer#4412",
+      "stars": 5,
+      "category": "Car Meets & Racing",
+      "experience": "1-3 Months",
+      "title": "Los Santos Tamil Car Meets are Pure Fire!",
+      "comment": "The weekly car shows, mountain drift runs, and highway convoys are insanely fun. Great custom builds, respectful members, and high adrenaline.",
+      "recommended": true,
+      "helpful": 11,
+      "submitted_at": "2026-10-11T18:40:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Siva Nathan",
+      "discord": "siva_kl#7723",
+      "stars": 5,
+      "category": "GTA 5 Online",
+      "experience": "3-6 Months",
+      "title": "Best Crew for Heists and Money Grinding",
+      "comment": "Cayo Perico, Casino, and Doomsday heists with REAPER ARAFATH and the squad are super smooth. No griefers, pure coordination and maximum payouts.",
+      "recommended": true,
+      "helpful": 14,
+      "submitted_at": "2026-10-11T09:15:00Z"
+    },
+    {
+      "id": 1,
+      "name": "Arun Kumar",
+      "discord": "arun_chennai#1001",
+      "stars": 5,
+      "category": "FiveM Roleplay",
+      "experience": "6+ Months",
+      "title": "Top-tier FiveM Tamil Roleplay!",
+      "comment": "Joined REAPERZ 4 months ago for FiveM police and EMS RP. The community is well-organized, friendly, and non-toxic. Voice calls in Tamil make gaming feel like family!",
+      "recommended": true,
+      "helpful": 18,
+      "submitted_at": "2026-10-10T14:20:00Z"
+    }
+  ],
+  "library": [
+    {
+      "id": 8,
+      "title": "Reaperz",
+      "category": "GTA 5 Online",
+      "filename": "reaperz_1791914629893_25d45df3.png",
+      "file_path": "assets/images/uploads/reaperz_1791914629893_25d45df3.png",
+      "file_size": 2858677,
+      "mime_type": "image/png",
+      "description": "game",
+      "uploaded_by": "REAPER ARAFATH",
+      "uploaded_at": "2026-10-13T18:03:49.895Z"
+    }
+  ],
+  "community_highlights": [
+    {
+      "id": 1,
+      "title": "NURP Community Mega Roleplay",
+      "description": "REAPERZ Police & EMS division staging tactical patrol convoy across Sandy Shores.",
+      "image_url": "assets/images/gallery-1.jpg",
+      "event_date": "2026-10-01",
+      "display_order": 1,
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    },
+    {
+      "id": 2,
+      "title": "Los Santos Midnight Squad Run",
+      "description": "High-speed night cruise and freeway formation through downtown Los Santos.",
+      "image_url": "assets/images/gallery-2.jpg",
+      "event_date": "2026-10-02",
+      "display_order": 2,
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    },
+    {
+      "id": 3,
+      "title": "Tamil Car Enthusiasts Meetup",
+      "description": "Clean JDM tuners and widebody hypercars on display at Del Perro pier car show.",
+      "image_url": "assets/images/gallery-3.jpg",
+      "event_date": "2026-10-03",
+      "display_order": 3,
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    },
+    {
+      "id": 4,
+      "title": "City Roleplay Action & Briefing",
+      "description": "Subway station operation and city roleplay patrol debriefing session.",
+      "image_url": "assets/images/gallery-4.jpg",
+      "event_date": "2026-10-04",
+      "display_order": 4,
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    },
+    {
+      "id": 5,
+      "title": "Highway Convoy & Fleet Drive",
+      "description": "Blaine County highway formation convoy heading towards Mount Chiliad.",
+      "image_url": "assets/images/gallery-5.jpg",
+      "event_date": "2026-10-05",
+      "display_order": 5,
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    },
+    {
+      "id": 6,
+      "title": "Squad Briefing & Heist Setup",
+      "description": "Pre-heist tactical briefing and weapons layout prior to Casino vault breach.",
+      "image_url": "assets/images/gallery-6.jpg",
+      "event_date": "2026-10-06",
+      "display_order": 6,
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    }
+  ],
+  "events": [
+    {
+      "id": 4,
+      "title": "Sandy Shores Tactical Convoy",
+      "description": "Cross-county convoy and fleet parade featuring 25+ crew members cruising through Blaine County.",
+      "image_url": "assets/images/gallery-5.jpg",
+      "event_date": "2026-09-28",
+      "event_time": "8:00 PM IST",
+      "location": "FiveM Roleplay Server",
+      "organizer": "SHADOW",
+      "status": "Past",
+      "category": "Community Event",
+      "prize": "",
+      "button_text": "",
+      "display_order": 0,
+      "discord_link": "https://discord.gg/reaperz-tamil",
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    },
+    {
+      "id": 3,
+      "title": "Doomsday Heist Criminal Mastermind Run",
+      "description": "Elite crew operation completing all acts of the Doomsday Heist with zero deaths and elite challenge times.",
+      "image_url": "assets/images/gallery-6.jpg",
+      "event_date": "2026-10-05",
+      "event_time": "7:30 PM IST",
+      "location": "GTA V Online Facility",
+      "organizer": "VIKRAM & WOLF",
+      "status": "Past",
+      "category": "Community Event",
+      "prize": "",
+      "button_text": "",
+      "display_order": 0,
+      "discord_link": "https://discord.gg/reaperz-tamil",
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    },
+    {
+      "id": 1,
+      "title": "NURP Community Mega Roleplay Event",
+      "description": "Massive city-wide joint operation with police pursuits, gang territory showdowns, and emergency EMS responses on NURP RP server.",
+      "image_url": "assets/images/gallery-1.jpg",
+      "event_date": "2026-10-20",
+      "event_time": "8:00 PM IST",
+      "location": "NURP Roleplay Server",
+      "organizer": "Dark & REAPERZ Staff",
+      "status": "Upcoming",
+      "category": "Community Event",
+      "prize": "",
+      "button_text": "",
+      "display_order": 0,
+      "discord_link": "https://discord.gg/reaperz-tamil",
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    },
+    {
+      "id": 2,
+      "title": "Los Santos Midnight Tuner Grand Prix",
+      "description": "High-octane street racing tournament through the tunnels and highways of Los Santos. Cash prizes and custom Discord titles for winners!",
+      "image_url": "assets/images/gallery-3.jpg",
+      "event_date": "2026-10-25",
+      "event_time": "9:00 PM IST",
+      "location": "GTA V Online Private Lobby",
+      "organizer": "KING",
+      "status": "Upcoming",
+      "category": "Community Event",
+      "prize": "",
+      "button_text": "",
+      "display_order": 0,
+      "discord_link": "https://discord.gg/reaperz-tamil",
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    }
+  ],
+  "gaming_platforms": [
+    {
+      "id": 1,
+      "type": "gta_online",
+      "name": "TN REAPERZ",
+      "description": "Official Rockstar Social Club Crew for GTA Online",
+      "image_url": "assets/images/gallery-2.jpg",
+      "link": "https://socialclub.rockstargames.com",
+      "status": "Active",
+      "display_order": 1,
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    },
+    {
+      "id": 2,
+      "type": "fivem",
+      "name": "THALAI NAGARAM",
+      "description": "Tamil Roleplay FiveM Server — Primary Server for REAPERZ",
+      "image_url": "assets/images/gallery-4.jpg",
+      "link": "fivem://connect/cfx.re/join/nurp",
+      "status": "Active",
+      "display_order": 1,
+      "is_published": 1,
+      "created_at": "2026-10-15 07:16:29"
+    }
+  ],
+  "website_settings": {
+    "discord_invite": "https://discord.gg/pfr2HumVW",
+    "crew_name": "TN REAPERZ"
+  }
 }

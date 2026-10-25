@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="REAPERZ - Premier Tamil GTA 5 Online & FiveM Roleplay Gaming Community.">
   <title>REAPERZ | Tamil GTA V & FiveM Community</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20261015-1648-platform-gallery-match">
+  <link rel="stylesheet" href="css/business.css?v=20261025-biz">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dashboard-home">
 
   <!-- SITE HEADER -->
   <header class="site-header">
@@ -18,7 +19,12 @@
     <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
     <nav>
       <a class="active" href="index.html">Home</a>
+      <a href="businesses.html">Businesses</a>
       <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
       <a href="join.html">Join Us</a>
       <a href="rules.html">Rules</a>
       <a href="contact.html">Contact</a>
@@ -38,6 +44,7 @@
         </p>
         <div class="hero-buttons">
           <a class="btn btn-primary" href="join.html">JOIN REAPERZ</a>
+          <a class="btn btn-outline" href="businesses.html">🏢 FIVEM BUSINESSES</a>
           <a class="btn btn-outline" href="members.html">VIEW CREW ROSTER</a>
         </div>
         <div class="stats">
@@ -73,38 +80,89 @@
       </div>
     </section>
 
+    <!-- DATABASE-DRIVEN GAMING PLATFORMS -->
+    <section class="section gaming-platforms-section" aria-labelledby="gaming-platforms-title">
+      <div class="section-heading">
+        <p class="eyebrow">REAPERZ GAMING</p>
+        <h2 id="gaming-platforms-title">OUR <span>PLATFORMS</span></h2>
+      </div>
+      <div class="gaming-platform-groups">
+        <section class="gaming-platform-group" aria-labelledby="gta-crew-title">
+          <p class="eyebrow">🎮 GTA V ONLINE</p>
+          <h3 id="gta-crew-title">ONLINE CREW</h3>
+          <div id="gtaCrewDisplay" class="gaming-platform-list" aria-live="polite">
+            <p class="platform-loading">Loading crew...</p>
+          </div>
+        </section>
+        <section class="gaming-platform-group" aria-labelledby="fivem-title">
+          <p class="eyebrow">⚡ FIVEM</p>
+          <h3 id="fivem-title">SERVERS</h3>
+          <div id="fivemServersDisplay" class="gaming-platform-list fivem-server-list" aria-live="polite">
+            <p class="platform-loading">Loading servers...</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- FIVEM BUSINESSES SHOWCASE -->
+    <section class="section" style="padding-top:0;">
+      <div class="section-heading">
+        <p class="eyebrow">FIVEM BUSINESS SYSTEM</p>
+        <h2>COMMUNITY <span>BUSINESSES</span></h2>
+        <p style="color:#8e9fb5; max-width:600px; margin: 8px auto 0;">Explore in-game enterprises operated across our FiveM servers. Pre-book high-end vehicles or order custom tuning packages.</p>
+      </div>
+      <div class="business-cards-grid">
+        <!-- Eclipse: Apex Motors -->
+        <a class="business-hub-card apex" href="apex-motors.html">
+          <div class="business-hub-card-img-wrap">
+            <div class="business-hub-card-tag">VEHICLE DEALERSHIP</div>
+            <div style="width:100%;aspect-ratio:16/9;background:radial-gradient(circle at center, #2e080b 0%, #110507 100%);display:flex;align-items:center;justify-content:center;font-size:54px;">🏎️</div>
+          </div>
+          <div class="business-hub-card-body">
+            <div class="business-hub-card-server">ECLIPSE SERVER</div>
+            <h3>APEX MOTORS</h3>
+            <p>Premier FiveM vehicle showroom on Eclipse server. Browse sports, muscle, and hypercars with instant online pre-booking.</p>
+            <span class="btn-visit">OPEN APEX MOTORS →</span>
+          </div>
+        </a>
+
+        <!-- Thalai Nagaram: Hoonigan -->
+        <a class="business-hub-card hoonigan" href="hoonigan.html">
+          <div class="business-hub-card-img-wrap">
+            <div class="business-hub-card-tag">VEHICLE CUSTOMS</div>
+            <div style="width:100%;aspect-ratio:16/9;background:radial-gradient(circle at center, #2e1703 0%, #140801 100%);display:flex;align-items:center;justify-content:center;font-size:54px;">🔧</div>
+          </div>
+          <div class="business-hub-card-body">
+            <div class="business-hub-card-server">THALAI NAGARAM SERVER</div>
+            <h3>HOONIGAN CUSTOMS</h3>
+            <p>Custom workshop for high-end mods, engine tunes, custom paints, and aero kits. Request your custom build directly.</p>
+            <span class="btn-visit">OPEN HOONIGAN →</span>
+          </div>
+        </a>
+      </div>
+      <div style="text-align:center; margin-top: 32px;">
+        <a class="btn btn-outline" href="businesses.html">VIEW ALL BUSINESSES →</a>
+      </div>
+    </section>
+
     <!-- COMMUNITY HIGHLIGHTS / SCREENSHOTS GALLERY -->
     <section class="section" style="padding-top:0;">
       <div class="section-heading">
         <p class="eyebrow">GALLERY</p>
         <h2>COMMUNITY <span>HIGHLIGHTS</span></h2>
       </div>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="assets/images/gallery-1.jpg" alt="REAPERZ FiveM Roleplay Session">
-          <div class="gallery-caption">FiveM Patrol &amp; Meet</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/gallery-2.jpg" alt="GTA 5 Online Night Cruise">
-          <div class="gallery-caption">Night Squad Run</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/gallery-3.jpg" alt="Los Santos Car Meet">
-          <div class="gallery-caption">Tamil Car Enthusiasts Meet</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/gallery-4.jpg" alt="FiveM City Life">
-          <div class="gallery-caption">City Roleplay Action</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/gallery-5.jpg" alt="Crew Convoy">
-          <div class="gallery-caption">Highway Convoy</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/gallery-6.jpg" alt="REAPERZ Squad Setup">
-          <div class="gallery-caption">Squad Briefing</div>
-        </div>
+      <div class="gallery-grid" id="communityHighlightsGrid" aria-live="polite">
+        <p class="platform-loading">Loading community highlights...</p>
       </div>
+    </section>
+
+    <section class="section join-discord-banner" aria-labelledby="join-discord-title">
+      <p class="eyebrow">JOIN THE REAPERZ COMMUNITY</p>
+      <h2 id="join-discord-title">RIDE WITH <span>YOUR CREW</span></h2>
+      <p>Meet Tamil gamers, find your squad, and stay up to date with community events.</p>
+      <a id="joinDiscordButton" class="join-discord-btn" href="#" target="_blank" rel="noopener noreferrer" hidden>
+        JOIN DISCORD
+      </a>
     </section>
 
     <!-- DARK PANEL: WHY JOIN -->
@@ -131,16 +189,22 @@
       <p>Tamil GTA 5 Online &amp; FiveM Community</p>
     </div>
     <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="businesses.html">Businesses</a>
       <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
       <a href="join.html">Join Us</a>
       <a href="rules.html">Rules</a>
       <a href="contact.html">Contact</a>
-      <a href="admin.html">Admin</a>
+      <a href="admin.html">Staff Portal</a>
     </div>
     <p class="copyright">© 2026 REAPERZ. Built by REAPER ARAFATH. All rights reserved.</p>
   </footer>
 
   <script src="js/store.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20261015-1648-platform-gallery-match"></script>
 </body>
 </html>

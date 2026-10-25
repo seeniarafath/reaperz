@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pre-book your vehicle from Apex Motors Eclipse dealership. Instant booking reference and Discord verification.">
+  <title>Pre-Book Vehicle | Apex Motors • Eclipse | REAPERZ</title>
+  <link rel="stylesheet" href="css/style.css?v=20261025-biz">
+  <link rel="stylesheet" href="css/business.css?v=20261025-biz">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+    <nav id="primaryNav" aria-label="Main Navigation">
+      <button class="nav-close-btn" id="navCloseBtn" aria-label="Close navigation menu">✕</button>
+      <a href="index.html">Home</a>
+      <a class="active" href="businesses.html">Businesses</a>
+      <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-admin-link" href="admin.html"><span class="lock-icon">🔒</span> Staff Portal</a>
+    </nav>
+  </header>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="booking-hero">
+      <div class="booking-hero-content">
+        <p class="eyebrow" style="color:var(--apex-gold);">APEX MOTORS • ECLIPSE SERVER</p>
+        <h1 style="font:800 clamp(28px, 4vw, 44px)/1.1 'Orbitron',sans-serif;">VEHICLE <span>PRE-BOOKING</span></h1>
+        <p style="color:#8e9fb5; font-size:15px; margin-top:8px;">Reserve your vehicle online. A unique booking reference and Discord log will be generated automatically.</p>
+      </div>
+    </section>
+
+    <!-- BOOKING LAYOUT -->
+    <div class="booking-page-layout">
+      <!-- FORM CONTAINER -->
+      <div class="booking-form-card" id="formContainer">
+        <h2>RESERVATION FORM</h2>
+
+        <form id="prebookForm" novalidate>
+          <!-- Selected Vehicle Info Box -->
+          <div class="selected-vehicle-info" id="selectedVehBox">
+            <div style="font:700 11px 'Orbitron',sans-serif; color:var(--apex-orange); letter-spacing:1px; margin-bottom:4px;">SELECTED SHOWROOM VEHICLE</div>
+            <div class="selected-vehicle-info-name" id="selectedVehName">Loading...</div>
+            <div class="selected-vehicle-info-price" id="selectedVehPrice">$0</div>
+          </div>
+
+          <!-- Section 1: Customer Details -->
+          <div class="booking-form-section">
+            <div class="booking-form-section-title">1. Customer Information</div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="customerName">Full Name / RP Character Name *</label>
+                <input type="text" id="customerName" name="customer_name" placeholder="e.g. Torrow William" required>
+              </div>
+              <div class="form-group">
+                <label for="contactNumber">Contact Number (In-City or Phone) *</label>
+                <input type="tel" id="contactNumber" name="contact_number" placeholder="e.g. 2018719380" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="discordUsername">Discord Username *</label>
+                <input type="text" id="discordUsername" name="discord_username" placeholder="e.g. fahaad12_43541" required>
+              </div>
+              <div class="form-group">
+                <label for="discordId">Discord Snowflake ID (Optional)</label>
+                <input type="text" id="discordId" name="discord_id" placeholder="e.g. 937289791429562398">
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Vehicle Selection -->
+          <div class="booking-form-section">
+            <div class="booking-form-section-title">2. Vehicle Information</div>
+
+            <div class="form-group">
+              <label for="vehicleSelect">Choose Vehicle from Apex Motors Fleet *</label>
+              <select id="vehicleSelect" name="vehicle_id" required>
+                <option value="">-- Select a Vehicle --</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="exteriorColor">Preferred Exterior Finish / Color</label>
+                <input type="text" id="exteriorColor" name="exterior_color" placeholder="e.g. Matte Black, Crimson Red">
+              </div>
+              <div class="form-group">
+                <label for="dealershipLocation">Dealership Facility</label>
+                <input type="text" id="dealershipLocation" value="Postal 8156 (Apex Motors • Eclipse)" readonly style="color:#8e9fb5;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Scheduling & Message -->
+          <div class="booking-form-section">
+            <div class="booking-form-section-title">3. Handover Schedule &amp; Requests</div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="preferredDate">Preferred Date *</label>
+                <input type="date" id="preferredDate" name="preferred_date" required>
+              </div>
+              <div class="form-group">
+                <label for="preferredTime">Preferred Time</label>
+                <input type="text" id="preferredTime" name="preferred_time" placeholder="e.g. 8:00 PM IST / Evening">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bookingMessage">Additional Requirements / Notes</label>
+              <textarea id="bookingMessage" name="message" placeholder="Provide any special requests, custom plates, or delivery preferences..."></textarea>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-submit-booking" id="submitBtn">
+            <span>SUBMIT PRE-BOOKING</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- CONFIRMATION PANEL (Hidden initially) -->
+      <div class="booking-form-card booking-confirmation" id="confirmationPanel">
+        <div class="booking-confirmation-icon">✓</div>
+        <h2>BOOKING CONFIRMED!</h2>
+        <p style="color:#8e9fb5; font-size:15px;">Your pre-booking has been received and securely registered in the Apex Motors database. Our sales team on Eclipse has been notified via Discord log.</p>
+
+        <div class="booking-reference-display" id="confReference">#APX-0000-XX</div>
+
+        <div class="booking-confirmation-details">
+          <div class="booking-confirmation-detail-row">
+            <span class="bcd-label">Customer Name:</span>
+            <span class="bcd-value" id="confCustomer"></span>
+          </div>
+          <div class="booking-confirmation-detail-row">
+            <span class="bcd-label">Vehicle:</span>
+            <span class="bcd-value" id="confVehicle"></span>
+          </div>
+          <div class="booking-confirmation-detail-row">
+            <span class="bcd-label">Model:</span>
+            <span class="bcd-value" id="confModel"></span>
+          </div>
+          <div class="booking-confirmation-detail-row">
+            <span class="bcd-label">Vehicle Price:</span>
+            <span class="bcd-value" id="confPrice" style="color:var(--apex-gold);"></span>
+          </div>
+          <div class="booking-confirmation-detail-row">
+            <span class="bcd-label">Server &amp; Dealership:</span>
+            <span class="bcd-value">Eclipse • Apex Motors</span>
+          </div>
+          <div class="booking-confirmation-detail-row">
+            <span class="bcd-label">Status:</span>
+            <span class="bcd-value" style="color:var(--blue2);">Pending Approval</span>
+          </div>
+          <div class="booking-confirmation-detail-row">
+            <span class="bcd-label">Submitted:</span>
+            <span class="bcd-value" id="confTime"></span>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:28px;">
+          <a href="apex-motors.html" class="btn btn-outline">RETURN TO SHOWROOM</a>
+          <button type="button" class="btn btn-primary" onclick="window.print()">PRINT / SAVE RECEIPT</button>
+        </div>
+      </div>
+
+      <!-- SIDEBAR SUMMARY -->
+      <aside class="booking-summary-card">
+        <h3>ORDER SUMMARY</h3>
+
+        <div class="booking-summary-row">
+          <span class="booking-summary-label">Dealership</span>
+          <span class="booking-summary-value">Apex Motors</span>
+        </div>
+        <div class="booking-summary-row">
+          <span class="booking-summary-label">Server</span>
+          <span class="booking-summary-value">Eclipse FiveM</span>
+        </div>
+        <div class="booking-summary-row">
+          <span class="booking-summary-label">Selected Vehicle</span>
+          <span class="booking-summary-value" id="sideVehName">None selected</span>
+        </div>
+        <div class="booking-summary-row">
+          <span class="booking-summary-label">Model Class</span>
+          <span class="booking-summary-value" id="sideVehModel">-</span>
+        </div>
+        <div class="booking-summary-row">
+          <span class="booking-summary-label">Handover Facility</span>
+          <span class="booking-summary-value">Postal 8156</span>
+        </div>
+
+        <div class="booking-total-price">
+          <span>ESTIMATED PRICE</span>
+          <span id="sideVehPrice">$0</span>
+        </div>
+
+        <div style="margin-top:20px; padding:14px; background:rgba(0,0,0,0.3); border-radius:10px; font-size:12px; color:#8e9fb5; line-height:1.5;">
+          ℹ️ Pre-bookings guarantee reservation priority. Our sales representative will verify your Discord account prior to city handover.
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+      <p>Tamil GTA 5 Online &amp; FiveM Community</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Staff Portal</a>
+    </div>
+    <p class="copyright">© 2026 REAPERZ Tamil Gaming Community. All rights reserved.</p>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/main.js?v=20261025-biz"></script>
+  <script>
+    (function() {
+      let vehicles = [];
+      const select = document.getElementById('vehicleSelect');
+      const sideName = document.getElementById('sideVehName');
+      const sideModel = document.getElementById('sideVehModel');
+      const sidePrice = document.getElementById('sideVehPrice');
+      const selBox = document.getElementById('selectedVehBox');
+      const selName = document.getElementById('selectedVehName');
+      const selPrice = document.getElementById('selectedVehPrice');
+      const form = document.getElementById('prebookForm');
+      const submitBtn = document.getElementById('submitBtn');
+
+      function formatPrice(n) { return '$' + Number(n || 0).toLocaleString(); }
+
+      function updateSelected(id) {
+        const v = vehicles.find(item => item.id === parseInt(id, 10));
+        if (v) {
+          sideName.textContent = v.name;
+          sideModel.textContent = v.model + ' (' + v.category + ')';
+          sidePrice.textContent = formatPrice(v.price);
+          selName.textContent = `${v.name} • ${v.model} (${v.category})`;
+          selPrice.textContent = formatPrice(v.price);
+          selBox.classList.add('visible');
+        } else {
+          sideName.textContent = 'None selected';
+          sideModel.textContent = '-';
+          sidePrice.textContent = '$0';
+          selBox.classList.remove('visible');
+        }
+      }
+
+      select?.addEventListener('change', () => updateSelected(select.value));
+
+      // Fetch vehicles from API
+      async function loadVehicles() {
+        try {
+          const res = await fetch('/api/vehicles');
+          const data = await res.json();
+          if (data.success && data.vehicles) {
+            vehicles = data.vehicles;
+            select.innerHTML = '<option value="">-- Select a Vehicle --</option>' +
+              vehicles.map(v => `<option value="${v.id}">${v.name} - ${v.model} (${formatPrice(v.price)}) [${v.availability}]</option>`).join('');
+
+            // Pre-select if URL param provided
+            const params = new URLSearchParams(window.location.search);
+            const preId = params.get('vehicle_id');
+            if (preId) {
+              select.value = preId;
+              updateSelected(preId);
+            }
+          }
+        } catch(err) {
+          console.error('[Prebook] Error loading vehicles:', err);
+        }
+      }
+
+      // Default date to tomorrow
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dateInput = document.getElementById('preferredDate');
+      if (dateInput) {
+        dateInput.value = tomorrow.toISOString().split('T')[0];
+        dateInput.min = new Date().toISOString().split('T')[0];
+      }
+
+      // Form Submit
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const vId = select.value;
+        if (!vId) {
+          alert('Please select a vehicle to pre-book.');
+          select.focus();
+          return;
+        }
+
+        const v = vehicles.find(item => item.id === parseInt(vId, 10));
+        if (!v) {
+          alert('Invalid vehicle selection.');
+          return;
+        }
+
+        const customerName = document.getElementById('customerName').value.trim();
+        const contactNumber = document.getElementById('contactNumber').value.trim();
+        const discordUsername = document.getElementById('discordUsername').value.trim();
+        const discordId = document.getElementById('discordId').value.trim();
+        const preferredDate = document.getElementById('preferredDate').value;
+        const preferredTime = document.getElementById('preferredTime').value.trim();
+        const extColor = document.getElementById('exteriorColor').value.trim();
+        const rawMessage = document.getElementById('bookingMessage').value.trim();
+
+        let message = rawMessage;
+        if (extColor) {
+          message = (message ? message + ' | ' : '') + 'Exterior Finish: ' + extColor;
+        }
+
+        if (!customerName || !contactNumber || !discordUsername) {
+          alert('Please fill in all required customer details.');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'SUBMITTING RESERVATION...';
+
+        try {
+          const res = await fetch('/api/vehicle-bookings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              vehicle_id: v.id,
+              vehicle_name: v.name,
+              vehicle_model: v.model,
+              vehicle_price: v.price,
+              customer_name: customerName,
+              contact_number: contactNumber,
+              discord_username: discordUsername,
+              discord_id: discordId,
+              preferred_date: preferredDate,
+              preferred_time: preferredTime,
+              message: message
+            })
+          });
+
+          const result = await res.json();
+          if (result.success && result.booking) {
+            const b = result.booking;
+            document.getElementById('formContainer').style.display = 'none';
+            const conf = document.getElementById('confirmationPanel');
+            conf.classList.add('visible');
+
+            document.getElementById('confReference').textContent = b.reference;
+            document.getElementById('confCustomer').textContent = b.customer_name;
+            document.getElementById('confVehicle').textContent = b.vehicle_name;
+            document.getElementById('confModel').textContent = b.vehicle_model;
+            document.getElementById('confPrice').textContent = formatPrice(b.vehicle_price);
+            document.getElementById('confTime').textContent = new Date().toLocaleString();
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            alert(result.message || 'Submission failed. Please check inputs.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>SUBMIT PRE-BOOKING</span> <span aria-hidden="true">→</span>';
+          }
+        } catch(err) {
+          console.error('[Prebook] Error submitting:', err);
+          alert('Network or server error while submitting booking.');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>SUBMIT PRE-BOOKING</span> <span aria-hidden="true">→</span>';
+        }
+      });
+
+      loadVehicles();
+    })();
+  </script>
+</body>
+</html>

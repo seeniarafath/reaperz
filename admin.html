@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="REAPERZ Staff Management Portal — Authenticated command center for roster management, applications, media uploads, and community reviews.">
   <title>Staff Control Center | REAPERZ Admin</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20261015-events-portrait">
   <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/business.css?v=20261025-biz">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,16 +16,23 @@
 
   <!-- SITE HEADER -->
   <header class="site-header">
-    <div style="display:flex; align-items:center;">
+    <div style="display:flex; align-items:center; gap:10px;">
       <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
       <span class="admin-header-badge">STAFF DASHBOARD</span>
+      <div id="staffSessionChipContainer" class="staff-session-container" style="display:none;">
+        <span id="staffSessionChip" class="staff-session-chip">👑 Founder</span>
+        <button id="staffLogoutBtn" class="btn-logout" title="Exit Staff Portal">Logout</button>
+      </div>
     </div>
     <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
     <nav>
       <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="library.html">Library</a>
       <a href="members.html">Members</a>
       <a href="join.html">Join Us</a>
       <a href="rules.html">Rules</a>
+      <a href="rate.html">Rate Us</a>
       <a href="contact.html">Contact</a>
       <a class="nav-admin-link active" href="admin.html">Staff Portal</a>
     </nav>
@@ -33,7 +42,7 @@
     <section class="page-title">
       <p class="eyebrow">HEADQUARTERS COMMAND</p>
       <h1>COMMUNITY <span>DASHBOARD</span></h1>
-      <p>Manage members roster, review join applications, and monitor community inboxes.</p>
+      <p>Secure portal to manage members roster, review join applications, upload media captures, and moderate community reviews.</p>
     </section>
 
     <section class="section">
@@ -64,6 +73,22 @@
         </div>
 
         <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(0,183,255,0.1); color:var(--blue2);">🖼️</div>
+          <div class="stat-info">
+            <strong id="statTotalMedia">0</strong>
+            <span>Library Captures</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(255,215,0,0.1); color:var(--gold);">★</div>
+          <div class="stat-info">
+            <strong id="statTotalRatings">0</strong>
+            <span>Total Reviews</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
           <div class="stat-icon" style="background:rgba(255,23,68,0.1); color:var(--red);">📬</div>
           <div class="stat-info">
             <strong id="statTotalMessages">0</strong>
@@ -75,7 +100,13 @@
       <!-- TABS NAVIGATION -->
       <div class="admin-tabs">
         <button class="tab-btn active" data-tab="tab-applications">Join Applications</button>
+        <button class="tab-btn" data-tab="tab-businesses">🏢 FiveM Businesses</button>
         <button class="tab-btn" data-tab="tab-members">Members Management</button>
+        <button class="tab-btn" data-tab="tab-library">Media Library &amp; Uploads</button>
+        <button class="tab-btn" data-tab="tab-highlights">Community Highlights</button>
+        <button class="tab-btn" data-tab="tab-events">Events Management</button>
+        <button class="tab-btn" data-tab="tab-platforms">Gaming Platforms</button>
+        <button class="tab-btn" data-tab="tab-ratings">Ratings &amp; Reviews</button>
         <button class="tab-btn" data-tab="tab-messages">Contact Messages</button>
         <button class="tab-btn" data-tab="tab-settings">System Settings</button>
       </div>
@@ -109,14 +140,199 @@
         </div>
       </section>
 
+      <!-- FIVEM BUSINESS MANAGEMENT PANEL -->
+      <section id="tab-businesses" class="admin-panel-section">
+        <div class="panel-header-bar">
+          <div>
+            <h3>FiveM Business Command Center</h3>
+            <p style="color:var(--muted); font-size:13.5px;">Manage Eclipse (Apex Motors) and Thalai Nagaram (Hoonigan Customs) inventory, orders, and customer requests.</p>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button id="openAddVehicleBtn" class="btn btn-primary btn-sm">+ Add Apex Vehicle</button>
+            <button id="openAddServiceBtn" class="btn btn-outline btn-sm">+ Add Hoonigan Service</button>
+          </div>
+        </div>
+
+        <!-- Business Stats Mini-Row -->
+        <div class="biz-stats-row">
+          <div class="biz-mini-stat">
+            <strong id="bizStatTotalVeh">0</strong>
+            <span>Apex Vehicles</span>
+          </div>
+          <div class="biz-mini-stat">
+            <strong id="bizStatAvailVeh" style="color:var(--green);">0</strong>
+            <span>Available in Showroom</span>
+          </div>
+          <div class="biz-mini-stat">
+            <strong id="bizStatPendingBookings" style="color:var(--apex-gold);">0</strong>
+            <span>Pending Pre-Bookings</span>
+          </div>
+          <div class="biz-mini-stat">
+            <strong id="bizStatTotalBookings">0</strong>
+            <span>Total Pre-Bookings</span>
+          </div>
+          <div class="biz-mini-stat">
+            <strong id="bizStatPendingReq" style="color:var(--hoon-orange);">0</strong>
+            <span>Pending Custom Builds</span>
+          </div>
+          <div class="biz-mini-stat">
+            <strong id="bizStatTotalServices">0</strong>
+            <span>Hoonigan Services</span>
+          </div>
+        </div>
+
+        <!-- Sub-Navigation for Businesses -->
+        <div class="biz-sub-nav">
+          <button class="biz-sub-nav-btn active" data-sub="sub-apex-bookings">🚗 Apex Motors: Pre-Bookings</button>
+          <button class="biz-sub-nav-btn" data-sub="sub-apex-vehicles">🏎️ Apex Motors: Fleet Inventory</button>
+          <button class="biz-sub-nav-btn" data-sub="sub-hoon-requests">🔧 Hoonigan: Custom Requests</button>
+          <button class="biz-sub-nav-btn" data-sub="sub-hoon-services">⚙️ Hoonigan: Service Catalog</button>
+        </div>
+
+        <!-- SUB 1: Apex Motors Pre-Bookings -->
+        <div id="sub-apex-bookings" class="biz-sub-panel">
+          <div class="biz-search-bar">
+            <input type="search" id="bookingSearchInput" placeholder="Search by customer, ref #, discord, or car...">
+            <select id="bookingStatusFilter">
+              <option value="all">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Reserved">Reserved</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+            <button id="refreshBookingsBtn" class="btn btn-outline btn-sm">🔄 Refresh</button>
+          </div>
+
+          <div class="bookings-table-wrap">
+            <table class="bookings-table">
+              <thead>
+                <tr>
+                  <th>Ref #</th>
+                  <th>Customer</th>
+                  <th>Discord</th>
+                  <th>Vehicle</th>
+                  <th>Price</th>
+                  <th>Preferred Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookingsTableBody">
+                <tr><td colspan="8" style="text-align:center; padding:24px; color:#8e9fb5;">Loading pre-bookings...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SUB 2: Apex Motors Fleet Inventory -->
+        <div id="sub-apex-vehicles" class="biz-sub-panel" style="display:none;">
+          <div class="biz-search-bar">
+            <select id="vehicleCategoryFilter">
+              <option value="all">All Categories</option>
+              <option value="Sports">Sports</option>
+              <option value="Supercar">Supercar</option>
+              <option value="SUV">SUV</option>
+              <option value="Luxury">Luxury</option>
+              <option value="Muscle">Muscle</option>
+              <option value="Race">Race</option>
+            </select>
+            <select id="vehicleAvailFilter">
+              <option value="all">All Availabilities</option>
+              <option value="Available">Available</option>
+              <option value="Reserved">Reserved</option>
+              <option value="Sold">Sold</option>
+            </select>
+            <button id="refreshVehiclesBtn" class="btn btn-outline btn-sm">🔄 Refresh Fleet</button>
+          </div>
+
+          <div class="vehicle-admin-grid" id="vehicleAdminGrid">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- SUB 3: Hoonigan Custom Requests -->
+        <div id="sub-hoon-requests" class="biz-sub-panel" style="display:none;">
+          <div class="biz-search-bar">
+            <input type="search" id="hoonSearchInput" placeholder="Search customer, ref #, vehicle...">
+            <select id="hoonStatusFilter">
+              <option value="all">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+            <button id="refreshHoonRequestsBtn" class="btn btn-outline btn-sm">🔄 Refresh</button>
+          </div>
+
+          <div class="bookings-table-wrap">
+            <table class="bookings-table">
+              <thead>
+                <tr>
+                  <th>Ref #</th>
+                  <th>Client</th>
+                  <th>Discord</th>
+                  <th>Vehicle</th>
+                  <th>Services</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="hoonRequestsTableBody">
+                <tr><td colspan="8" style="text-align:center; padding:24px; color:#8e9fb5;">Loading customization requests...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SUB 4: Hoonigan Services -->
+        <div id="sub-hoon-services" class="biz-sub-panel" style="display:none;">
+          <div class="bookings-table-wrap">
+            <table class="bookings-table">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Category</th>
+                  <th>Price Range</th>
+                  <th>Duration</th>
+                  <th>Available</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="servicesTableBody">
+                <tr><td colspan="6" style="text-align:center; padding:24px; color:#8e9fb5;">Loading service catalog...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <!-- 2. MEMBERS PANEL -->
       <section id="tab-members" class="admin-panel-section">
         <div class="panel-header-bar">
           <div>
             <h3>Official Community Roster</h3>
-            <p style="color:var(--muted); font-size:13.5px;">Members displayed on the public Members page.</p>
+            <p style="color:var(--muted); font-size:13.5px;">Members displayed on the public Members roster connected directly to SQL database.</p>
           </div>
           <button id="openAddMemberBtn" class="btn btn-primary btn-sm">+ Add New Member</button>
+        </div>
+
+        <div class="member-admin-filters">
+          <input id="adminMemberSearch" type="search" placeholder="Search name, Discord, ID, role...">
+          <select id="adminMemberRoleFilter">
+            <option value="">All Roles</option>
+            <option>Founder</option><option>Admin</option><option>Moderator</option><option>Developer</option><option>Member</option>
+          </select>
+          <select id="adminMemberDepartmentFilter">
+            <option value="">All Departments</option>
+          </select>
+          <select id="adminMemberStatusFilter">
+            <option value="">All Statuses</option>
+            <option>Online</option><option>Idle</option><option>Do Not Disturb</option><option>Offline</option>
+          </select>
         </div>
 
         <div class="admin-table-container">
@@ -125,9 +341,9 @@
               <tr>
                 <th>Member</th>
                 <th>Role</th>
-                <th>Game</th>
-                <th>Discord</th>
-                <th>Status</th>
+                <th>Department</th>
+                <th>Discord Info</th>
+                <th>Discord Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -138,12 +354,203 @@
         </div>
       </section>
 
-      <!-- 3. CONTACT MESSAGES PANEL -->
+      <section id="tab-highlights" class="admin-panel-section">
+        <div class="panel-header-bar">
+          <div>
+            <h3>Community Highlights</h3>
+            <p style="color:var(--muted); font-size:13.5px;">Manage the published highlights shown in the Home page gallery.</p>
+          </div>
+          <button id="addHighlightBtn" class="btn btn-primary btn-sm">+ Add Highlight</button>
+        </div>
+        <div id="adminHighlightsList" class="content-admin-list"></div>
+      </section>
+
+      <section id="tab-events" class="admin-panel-section">
+        <div class="panel-header-bar">
+          <div>
+            <h3>Events Management</h3>
+            <p style="color:var(--muted); font-size:13.5px;">Manage upcoming, active, and completed campaigns shown on the public Events page.</p>
+          </div>
+          <button id="addEventBtn" class="btn btn-primary btn-sm">+ Add Event</button>
+        </div>
+        <div id="adminEventsList" class="content-admin-list"></div>
+      </section>
+
+      <!-- 3. MEDIA LIBRARY & UPLOADS PANEL -->
+      <section id="tab-library" class="admin-panel-section">
+        <div class="panel-header-bar">
+          <div>
+            <h3>Media Library Management</h3>
+            <p style="color:var(--muted); font-size:13.5px;">Upload new FiveM/GTA 5 screenshots or delete existing captures from the website.</p>
+          </div>
+        </div>
+
+        <!-- UPLOAD IMAGE CARD -->
+        <div class="card" style="margin-bottom:28px;">
+          <h4 style="font:700 16px 'Orbitron', sans-serif; color:var(--blue2); margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+            <span>📤</span> UPLOAD NEW IMAGE TO LIBRARY
+          </h4>
+
+          <form id="mediaUploadForm" class="form-card" style="padding:0; background:none; border:none;">
+            <div class="form-grid">
+              <label>
+                Media Title *
+                <input type="text" id="uploadTitle" required placeholder="e.g. Midnight Police Patrol in Los Santos">
+              </label>
+
+              <label>
+                Division / Category *
+                <select id="uploadCategory" required>
+                  <option value="FiveM RP">FiveM RP</option>
+                  <option value="GTA 5 Online">GTA 5 Online</option>
+                  <option value="Car Meets">Car Meets &amp; Racing</option>
+                  <option value="Heist Operations">Heist Operations</option>
+                  <option value="Crew Convoys">Crew Convoys</option>
+                  <option value="General">General Highlights</option>
+                </select>
+              </label>
+            </div>
+
+            <!-- DRAG & DROP / FILE SELECTOR ZONE -->
+            <label style="margin-top:10px;">Select Image File (JPG, PNG, WEBP, GIF — Max 10MB) *</label>
+            <div id="uploadDropzone" class="upload-dropzone">
+              <input type="file" id="uploadFileInput" accept=".jpg,.jpeg,.png,.webp,.gif" style="display:none;">
+              <div id="dropzonePrompt" class="dropzone-prompt">
+                <div style="font-size:36px; margin-bottom:8px;">🖼️</div>
+                <strong>Click to browse or drop an image here</strong>
+                <p style="color:var(--muted); font-size:12px; margin-top:4px;">Supported: JPG, PNG, WEBP, GIF (Max 10MB)</p>
+              </div>
+              <div id="dropzonePreview" class="dropzone-preview" style="display:none;">
+                <img id="previewImg" src="" alt="Selected Preview">
+                <div class="preview-info">
+                  <strong id="previewFilename">image.jpg</strong>
+                  <span id="previewFilesize">0 KB</span>
+                  <button type="button" id="removeFileBtn" class="btn-remove-file">Change Image</button>
+                </div>
+              </div>
+            </div>
+
+            <label style="margin-top:14px;">
+              Description / In-Game Context (Optional)
+              <textarea id="uploadDescription" rows="2" placeholder="Brief story, location, or details about this gameplay capture..."></textarea>
+            </label>
+
+            <button type="submit" id="submitUploadBtn" class="btn btn-primary" style="margin-top:14px;">
+              UPLOAD TO LIBRARY
+            </button>
+            <p id="uploadMessage" class="form-message"></p>
+          </form>
+        </div>
+
+        <!-- UPLOADED MEDIA HEADER & TOGGLE -->
+        <div class="panel-header-bar" style="margin-bottom:12px;">
+          <div>
+            <h4 style="font:700 15px 'Orbitron', sans-serif; color:#fff;">Existing Library Captures</h4>
+            <span id="mediaCountBadge" style="font-size:12px; color:var(--muted);">0 items in library</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button type="button" id="adminMediaViewCardsBtn" class="btn btn-primary btn-sm" style="padding:6px 14px; font-size:11px;">🎴 3:4 CARDS VIEW</button>
+            <button type="button" id="adminMediaViewTableBtn" class="btn btn-outline btn-sm" style="padding:6px 14px; font-size:11px;">📋 TABLE VIEW</button>
+          </div>
+        </div>
+
+        <!-- 3:4 CARDS GRID VIEW (DEFAULT) -->
+        <div id="adminLibraryCardsGrid" class="library-grid" style="margin-bottom:28px;">
+          <!-- Rendered dynamically via js/admin.js -->
+        </div>
+
+        <!-- TABLE VIEW -->
+        <div class="admin-table-container" id="adminLibraryTableContainer" style="display:none;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Preview</th>
+                <th>Title</th>
+                <th>Division</th>
+                <th>Uploaded By</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="libraryTableBody">
+              <!-- Rendered dynamically via js/admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- GAMING PLATFORMS MANAGEMENT PANEL -->
+      <section id="tab-platforms" class="admin-panel-section">
+        <div class="panel-header-bar">
+          <div>
+            <h3>Gaming Platforms</h3>
+            <p style="color:var(--muted); font-size:13.5px;">Manage the GTA V Online crew and published FiveM servers shown on the Home page.</p>
+          </div>
+        </div>
+
+        <div class="gaming-admin-section">
+          <div class="panel-header-bar">
+            <div>
+              <h4>GTA V Online Crew</h4>
+              <p style="color:var(--muted); font-size:13px;">Edit, publish, or remove the crew displayed to visitors.</p>
+            </div>
+            <button id="addCrewPlatformBtn" class="btn btn-primary btn-sm">+ Add Crew</button>
+          </div>
+          <div id="gamingCrewList" class="gaming-admin-list">
+            <p class="platform-loading">Loading crew...</p>
+          </div>
+        </div>
+
+        <div class="gaming-admin-section">
+          <div class="panel-header-bar">
+            <div>
+              <h4>FiveM Servers</h4>
+              <p style="color:var(--muted); font-size:13px;">Add servers, update details and status, change display order, or hide them from the Home page.</p>
+            </div>
+            <button id="addFiveMPlatformBtn" class="btn btn-primary btn-sm">+ Add Server</button>
+          </div>
+          <div id="gamingServerList" class="gaming-admin-list gaming-admin-server-list">
+            <p class="platform-loading">Loading servers...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RATINGS PANEL -->
+      <section id="tab-ratings" class="admin-panel-section">
+        <div class="panel-header-bar">
+          <div>
+            <h3>Community Ratings &amp; Reviews</h3>
+            <p style="color:var(--muted); font-size:13.5px;">Player feedback submitted via Rate Us. Authorized staff can monitor or remove reviews.</p>
+          </div>
+        </div>
+
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Reviewer</th>
+                <th>Discord</th>
+                <th>Category</th>
+                <th>Stars</th>
+                <th>Review Headline &amp; Comment</th>
+                <th>Helpful</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ratingsTableBody">
+              <!-- Rendered dynamically via js/admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- CONTACT MESSAGES PANEL -->
       <section id="tab-messages" class="admin-panel-section">
         <div class="panel-header-bar">
           <div>
             <h3>Incoming Messages</h3>
-            <p style="color:var(--muted); font-size:13.5px;">Partnerships, support inquiries, and reports from the Contact page.</p>
+            <p style="color:var(--muted); font-size:13.5px;">Inquiries and feedback from the Contact page.</p>
           </div>
         </div>
 
@@ -165,32 +572,125 @@
         </div>
       </section>
 
-      <!-- 4. SYSTEM SETTINGS PANEL -->
+      <!-- 6. SYSTEM SETTINGS PANEL -->
       <section id="tab-settings" class="admin-panel-section">
-        <div class="card" style="max-width:700px;">
-          <h3 style="margin-bottom:12px;">Database Management &amp; Utilities</h3>
-          <p style="color:var(--muted); margin-bottom:20px;">
-            The portal runs in hybrid mode. If the Node.js server (<code>node server.js</code>) is active, data saves to <code>data/db.json</code>. If running via VS Code Live Server, data is safely saved in your browser's LocalStorage.
-          </p>
-          <div style="display:flex; gap:14px; flex-wrap:wrap;">
-            <button id="resetDbBtn" class="btn btn-danger btn-sm">↺ Reset Database to Default Seed</button>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px;">
+          <!-- CHANGE PASSWORD CARD -->
+          <div class="card">
+            <h3 style="font:700 16px 'Orbitron', sans-serif; margin-bottom:8px; color:var(--blue2);">🔐 Change Staff Password</h3>
+            <p style="color:var(--muted); font-size:13px; margin-bottom:16px;">
+              Update your staff account password securely using salted PBKDF2 hashing.
+            </p>
+            <form id="changePasswordForm" class="form-card" style="padding:0; background:none; border:none;">
+              <label>
+                Current Password *
+                <input type="password" id="currentPassInput" required placeholder="Enter current password">
+              </label>
+              <label style="margin-top:10px;">
+                New Password (Min 8 chars) *
+                <input type="password" id="newPassInput" required placeholder="Enter new password">
+              </label>
+              <label style="margin-top:10px;">
+                Confirm New Password *
+                <input type="password" id="confirmPassInput" required placeholder="Re-enter new password">
+              </label>
+              <button class="btn btn-primary btn-sm" type="submit" style="margin-top:16px;">UPDATE PASSWORD</button>
+              <p id="changePassMessage" class="form-message"></p>
+            </form>
+          </div>
+
+          <!-- DATABASE MAINTENANCE CARD -->
+          <div class="card">
+            <h3 style="font:700 16px 'Orbitron', sans-serif; margin-bottom:8px; color:var(--gold);">⚙️ Database Management</h3>
+            <p style="color:var(--muted); font-size:13px; margin-bottom:16px; line-height:1.6;">
+              Data is stored in SQLite (<code>data/reaperz.db</code>) with prepared statements and mirrored to <code>data/db.json</code>.
+            </p>
+            <div style="margin-top:20px;">
+              <button id="resetDbBtn" class="btn btn-danger btn-sm">↺ Reset Database to Default Seed</button>
+            </div>
+            <div class="card">
+              <h3 style="font:700 16px 'Orbitron', sans-serif; margin-bottom:8px; color:var(--blue2);">💬 Discord Invite</h3>
+              <p style="color:var(--muted); font-size:13px; margin-bottom:16px;">Set the invite used by the Home page and event pages.</p>
+              <form id="discordInviteForm" class="form-card" style="padding:0; background:none; border:none;">
+                <label>
+                  Discord Invite URL
+                  <input id="discordInviteInput" type="url" required placeholder="https://discord.gg/...">
+                </label>
+                <button class="btn btn-primary btn-sm" type="submit" style="margin-top:16px;">SAVE INVITE</button>
+                <p id="discordInviteMessage" class="form-message" role="status"></p>
+              </form>
+            </div>
           </div>
         </div>
       </section>
     </section>
   </main>
 
-  <!-- ADD MEMBER MODAL -->
+  <!-- GAMING PLATFORM EDITOR -->
+  <div id="gamingPlatformModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box gaming-platform-modal">
+      <div class="modal-header">
+        <h3 id="gamingPlatformModalTitle" style="font:700 18px 'Orbitron';">Add Gaming Platform</h3>
+        <button id="closeGamingPlatformModalBtn" class="modal-close" type="button" aria-label="Close">&times;</button>
+      </div>
+      <form id="gamingPlatformForm" class="form-card gaming-platform-form">
+        <input type="hidden" name="id" id="gamingPlatformId">
+        <input type="hidden" name="type" id="gamingPlatformType">
+        <label>
+          <span id="gamingPlatformNameLabel">Name</span> *
+          <input name="name" id="gamingPlatformName" maxlength="150" required>
+        </label>
+        <label>
+          Description (Optional)
+          <textarea name="description" id="gamingPlatformDescription" rows="3" maxlength="2000"></textarea>
+        </label>
+        <label>
+          Logo / Image URL (Optional)
+          <input name="image_url" id="gamingPlatformImage" type="text" maxlength="500" placeholder="https://... or assets/images/...">
+        </label>
+        <label>
+          Server / Crew Link (Optional)
+          <input name="link" id="gamingPlatformLink" type="text" maxlength="500" placeholder="https://... or fivem://...">
+        </label>
+        <div class="form-grid">
+          <label>
+            Status
+            <select name="status" id="gamingPlatformStatus">
+              <option value="Active">Active</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Offline">Offline</option>
+            </select>
+          </label>
+          <label>
+            Display Order
+            <input name="display_order" id="gamingPlatformOrder" type="number" min="0" step="1" value="1">
+          </label>
+        </div>
+        <label class="gaming-publish-toggle">
+          <input name="is_published" id="gamingPlatformPublished" type="checkbox" checked>
+          <span>Published on the Home page</span>
+        </label>
+        <div class="gaming-platform-form-actions">
+          <button class="btn btn-primary" type="submit">SAVE CHANGES</button>
+          <button id="cancelGamingPlatformBtn" class="btn btn-outline" type="button">CANCEL</button>
+        </div>
+        <p id="gamingPlatformFormMessage" class="form-message" role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- MEMBER EDITOR -->
   <div id="addMemberModal" class="modal-overlay">
     <div class="modal-box">
       <div class="modal-header">
-        <h3 style="font:700 18px 'Orbitron';">Add New Member</h3>
+        <h3 id="memberModalTitle" style="font:700 18px 'Orbitron';">Add New Member</h3>
         <button id="closeAddMemberBtn" class="modal-close">&times;</button>
       </div>
       <form id="addMemberForm" class="form-card" style="padding:0; background:none; border:none;">
+        <input type="hidden" name="id" id="memberId">
         <label>
           Member Name / Call-sign *
-          <input name="name" required placeholder="e.g. REAPER ARAFATH">
+          <input name="name" required maxlength="100" placeholder="e.g. REAPER ARAFATH">
         </label>
         <label>
           Community Role *
@@ -198,6 +698,7 @@
             <option value="Founder">Founder</option>
             <option value="Admin">Admin</option>
             <option value="Moderator">Moderator</option>
+            <option value="Developer">Developer</option>
             <option value="Member" selected>Member</option>
           </select>
         </label>
@@ -206,39 +707,170 @@
           <input name="game" value="GTA V / FiveM" placeholder="GTA V / FiveM">
         </label>
         <label>
-          Discord Tag
-          <input name="discord" placeholder="username#1234">
+          Discord Username
+          <input name="discord" placeholder="username#1234 or @username">
         </label>
         <label>
-          Initial Status
+          Discord User ID (Snowflake for Live Presence)
+          <input name="discord_id" placeholder="e.g. 912345678901234560 (18 digits)">
+        </label>
+        <label>
+          Initial Discord Status
           <select name="status">
-            <option value="Online" selected>Online</option>
-            <option value="Offline">Offline</option>
+            <option value="Online" selected>Online (Green)</option>
+            <option value="Idle">Idle (Yellow)</option>
+            <option value="Do Not Disturb">Do Not Disturb (Red)</option>
+            <option value="Offline">Offline (Dark)</option>
           </select>
         </label>
-        <button class="btn btn-primary" type="submit" style="margin-top:10px;">SAVE MEMBER</button>
+        <label>
+          Custom Avatar Image URL (Optional)
+          <input name="avatar" type="url" maxlength="500" placeholder="https://... or leave blank for Discord/default">
+        </label>
+        <label>
+          Department
+          <input name="department" maxlength="100" value="Community">
+        </label>
+        <label>
+          Join Date
+          <input name="joined_at" type="date">
+        </label>
+        <label>
+          Member Description / Details
+          <textarea name="details" rows="3" maxlength="2000"></textarea>
+        </label>
+        <button id="saveMemberBtn" class="btn btn-primary" type="submit" style="margin-top:14px;">SAVE MEMBER TO DATABASE</button>
       </form>
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <div id="contentEditorModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box content-editor-modal">
+      <div class="modal-header">
+        <h3 id="contentEditorTitle" style="font:700 18px 'Orbitron';">Add content</h3>
+        <button id="closeContentEditorBtn" class="modal-close" type="button" aria-label="Close">&times;</button>
+      </div>
+      <form id="contentEditorForm" class="form-card content-editor-form">
+        <input type="hidden" name="id" id="contentEditorId">
+        <input type="hidden" name="kind" id="contentEditorKind">
+        <label>Title *
+          <input name="title" id="contentTitle" required maxlength="200">
+        </label>
+        <label>Description
+          <textarea name="description" id="contentDescription" rows="3" maxlength="4000"></textarea>
+        </label>
+        <label>Image URL
+          <input name="image_url" id="contentImageUrl" type="text" maxlength="500" placeholder="https://... or assets/images/...">
+        </label>
+        <label class="content-upload-control">Upload image
+          <input id="contentImageFile" type="file" accept=".jpg,.jpeg,.png,.webp,.gif">
+        </label>
+        <div id="contentImagePreviewWrap" class="content-image-preview-wrap" hidden>
+          <img id="contentImagePreview" alt="Image preview">
+        </div>
+        <div id="eventFields" class="content-event-fields" hidden>
+          <div class="form-grid">
+            <label>Date *
+              <input name="event_date" id="contentEventDate" type="date">
+            </label>
+            <label>Time (Optional)
+              <input name="event_time" id="contentEventTime" type="text" maxlength="50" placeholder="e.g. 8:00 PM IST">
+            </label>
+            <label>Category
+              <input name="category" id="contentEventCategory" type="text" maxlength="100" placeholder="e.g. Major Tier">
+            </label>
+            <label>Prize / Reward
+              <input name="prize" id="contentEventPrize" type="text" maxlength="150" placeholder="e.g. ₹50,000">
+            </label>
+            <label>Location / Server
+              <input name="location" id="contentEventLocation" maxlength="255">
+            </label>
+            <label>Organizer
+              <input name="organizer" id="contentEventOrganizer" maxlength="150">
+            </label>
+            <label>Event order
+              <input name="display_order" id="contentEventOrder" type="number" min="0" step="1" value="0">
+            </label>
+            <label>Button text
+              <input name="button_text" id="contentEventButtonText" type="text" maxlength="40" placeholder="e.g. Register Now">
+            </label>
+          </div>
+          <label>Event Link (Optional)
+            <input name="discord_link" id="contentEventLink" type="url" maxlength="500">
+          </label>
+          <label>Status
+            <select name="status" id="contentEventStatus">
+              <option>Upcoming</option><option>Active</option><option>Completed</option>
+            </select>
+          </label>
+        </div>
+        <div id="highlightFields" class="form-grid">
+          <label>Date
+            <input name="event_date" id="contentHighlightDate" type="date">
+          </label>
+          <label>Display order
+            <input name="display_order" id="contentDisplayOrder" type="number" min="0" step="1" value="1">
+          </label>
+        </div>
+        <label class="gaming-publish-toggle">
+          <input name="is_published" id="contentPublished" type="checkbox" checked>
+          <span>Published</span>
+        </label>
+        <div class="gaming-platform-form-actions">
+          <button id="saveContentBtn" class="btn btn-primary" type="submit">SAVE</button>
+          <button id="cancelContentEditorBtn" class="btn btn-outline" type="button">CANCEL</button>
+        </div>
+        <p id="contentEditorMessage" class="form-message" role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
   <footer>
     <div>
       <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
       <p>Tamil GTA 5 Online &amp; FiveM Community</p>
     </div>
     <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="library.html">Library</a>
       <a href="members.html">Members</a>
       <a href="join.html">Join Us</a>
       <a href="rules.html">Rules</a>
+      <a href="rate.html">Rate Us</a>
       <a href="contact.html">Contact</a>
       <a href="admin.html">Admin</a>
     </div>
     <p class="copyright">© 2026 REAPERZ. Built by REAPER ARAFATH. All rights reserved.</p>
   </footer>
 
+  <!-- SECURE STAFF AUTHENTICATION GATE (PASSWORD PROTECTED) -->
+  <div id="staffGateOverlay" class="staff-gate-overlay">
+    <div class="staff-gate-box">
+      <div class="staff-gate-icon">🔒</div>
+      <h2>STAFF <span>PORTAL</span></h2>
+      <p>Authorized access required. Please enter your staff credentials to access the headquarters management dashboard.</p>
+
+      <form id="staffLoginForm" class="form-card" style="padding:0; background:none; border:none; text-align:left;">
+        <label>
+          Staff Username *
+          <input type="text" id="staffLoginUsername" name="username" autocomplete="username" value="Dark" required placeholder="Username">
+        </label>
+
+        <label style="margin-top:12px;">
+          Staff Password *
+          <input type="password" id="staffLoginKey" required placeholder="Enter your staff password">
+        </label>
+
+        <button class="btn btn-primary" type="submit" style="width:100%; margin-top:20px;">VERIFY &amp; ACCESS DASHBOARD</button>
+        <p id="staffLoginError" style="color:var(--red); font-size:12.5px; margin-top:12px; text-align:center; min-height:18px;"></p>
+      </form>
+    </div>
+  </div>
+
   <script src="js/store.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/admin.js"></script>
+  <script src="js/main.js?v=20261015-1634"></script>
+  <script src="js/admin.js?v=20261015-events-fields"></script>
+  <script src="js/business-admin.js?v=20261025-biz"></script>
 </body>
 </html>

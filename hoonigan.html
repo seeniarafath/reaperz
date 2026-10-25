@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HOONIGAN CUSTOMS — Vehicle customization workshop on Thalai Nagaram FiveM server. Engine tuning, turbo, body kits, custom paint, and performance packages.">
+  <title>Hoonigan Customs | Thalai Nagaram FiveM | REAPERZ</title>
+  <link rel="stylesheet" href="css/style.css?v=20261025-biz">
+  <link rel="stylesheet" href="css/business.css?v=20261025-biz">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+    <nav id="primaryNav" aria-label="Main Navigation">
+      <button class="nav-close-btn" id="navCloseBtn" aria-label="Close navigation menu">✕</button>
+      <a href="index.html">Home</a>
+      <a class="active" href="businesses.html">Businesses</a>
+      <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-admin-link" href="admin.html"><span class="lock-icon">🔒</span> Staff Portal</a>
+    </nav>
+  </header>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hoonigan-hero">
+      <div class="hoonigan-hero-content">
+        <div class="hoonigan-logo-badge">
+          <div class="hoonigan-logo-icon">🔧</div>
+          <div class="hoonigan-logo-text">
+            <strong>HOONIGAN CUSTOMS</strong>
+            <span>THALAI NAGARAM SERVER • WORKSHOP</span>
+          </div>
+        </div>
+        <h1>RAW POWER &amp; <span>PERFECTION</span></h1>
+        <p class="hero-text" style="color:#b5c2d5; max-width:620px; font-size:17px; line-height:1.7; margin-bottom:32px;">
+          The premier performance tuning and vehicle fabrication facility on Thalai Nagaram FiveM server. From high-boost twin-turbo kits to bespoke wide-body conversions, our master mechanics transform your ride.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#services-section" style="background:linear-gradient(90deg,var(--hoon-orange),var(--hoon-yellow)); color:#000;">EXPLORE SERVICES</a>
+          <a class="btn btn-outline" href="#request-section">SUBMIT BUILD REQUEST</a>
+          <a class="btn btn-outline" href="businesses.html">← ALL BUSINESSES</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES LIST SECTION -->
+    <section class="section" id="services-section">
+      <div class="section-heading">
+        <p class="eyebrow" style="color:var(--hoon-orange);">THALAI NAGARAM • WORKSHOP SERVICES</p>
+        <h2>CUSTOMIZATION <span>SERVICES</span></h2>
+        <p style="color:#8e9fb5; max-width:600px; margin: 8px auto 0;">All modifications are installed by certified technicians and backed by in-city dyno-tested performance guarantees.</p>
+      </div>
+
+      <!-- SERVICES GRID -->
+      <div class="services-grid" id="servicesGrid" aria-live="polite">
+        <div class="biz-loading" style="grid-column: 1 / -1;">
+          <div class="biz-spinner"></div>
+          <span>Loading Hoonigan Customs services...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOMIZATION REQUEST SECTION -->
+    <section class="section" id="request-section" style="padding-top:0;">
+      <div class="section-heading">
+        <p class="eyebrow" style="color:var(--hoon-yellow);">SCHEDULE YOUR BUILD</p>
+        <h2>SUBMIT <span>CUSTOMIZATION REQUEST</span></h2>
+        <p style="color:#8e9fb5; max-width:600px; margin: 8px auto 0;">Fill out your vehicle specs and desired upgrades. A unique build tracking reference and Discord notification will be generated.</p>
+      </div>
+
+      <div class="hoon-request-layout">
+        <!-- FORM CARD -->
+        <div class="hoon-request-form-card" id="hoonFormContainer">
+          <form id="hooniganForm" novalidate>
+            <!-- 1. Customer info -->
+            <div class="booking-form-section">
+              <div class="booking-form-section-title" style="color:var(--hoon-orange);">1. Customer Information</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="hCustName">Full Name / RP Character Name *</label>
+                  <input type="text" id="hCustName" name="customer_name" placeholder="e.g. Ramesh Vel" required>
+                </div>
+                <div class="form-group">
+                  <label for="hContact">Contact Number *</label>
+                  <input type="tel" id="hContact" name="contact_number" placeholder="e.g. 9840123456" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="hDiscord">Discord Username *</label>
+                <input type="text" id="hDiscord" name="discord_username" placeholder="e.g. speed_king#1234" required>
+              </div>
+            </div>
+
+            <!-- 2. Vehicle Info -->
+            <div class="booking-form-section">
+              <div class="booking-form-section-title" style="color:var(--hoon-orange);">2. Target Vehicle</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="hVehName">Vehicle Name *</label>
+                  <input type="text" id="hVehName" name="vehicle_name" placeholder="e.g. Sultan RS, Elegy Retro" required>
+                </div>
+                <div class="form-group">
+                  <label for="hVehModel">Vehicle Model / Plate</label>
+                  <input type="text" id="hVehModel" name="vehicle_model" placeholder="e.g. SultanRS (TN-01-RPZ)">
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Desired Services -->
+            <div class="booking-form-section">
+              <div class="booking-form-section-title" style="color:var(--hoon-orange);">3. Select Required Services</div>
+              <div class="services-checklist" id="servicesChecklist">
+                <!-- Populated dynamically from API -->
+                <p style="color:#8e9fb5; font-size:13px;">Loading service catalog...</p>
+              </div>
+            </div>
+
+            <!-- 4. Schedule & Requirements -->
+            <div class="booking-form-section">
+              <div class="booking-form-section-title" style="color:var(--hoon-orange);">4. Schedule &amp; Additional Details</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="hDate">Preferred Drop-Off Date</label>
+                  <input type="date" id="hDate" name="preferred_date">
+                </div>
+                <div class="form-group">
+                  <label for="hTime">Preferred Time</label>
+                  <input type="text" id="hTime" name="preferred_time" placeholder="e.g. 7:00 PM IST">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="hRequirements">Specific Tuning / Fabrication Specs</label>
+                <textarea id="hRequirements" name="additional_requirements" placeholder="Tell us about specific parts, turbo PSI, color codes, wheel offsets, or camber requirements..."></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit-hoon" id="hSubmitBtn">
+              <span>SUBMIT CUSTOMIZATION REQUEST</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- CONFIRMATION (Hidden initially) -->
+        <div class="hoon-request-form-card" id="hoonConfirmation" style="display:none; text-align:center;">
+          <div class="booking-confirmation-icon" style="border-color:var(--hoon-orange); background:rgba(255,98,0,0.15); color:var(--hoon-orange);">✓</div>
+          <h2 style="font:700 22px 'Orbitron',sans-serif; color:#fff; margin-bottom:12px;">REQUEST SUBMITTED!</h2>
+          <p style="color:#8e9fb5; font-size:14px; line-height:1.6;">Your customization request has been filed in the Hoonigan workshop ledger. Our master mechanic on Thalai Nagaram will review your build.</p>
+
+          <div class="hoon-reference-display" id="hConfRef">#HGN-0000-XX</div>
+
+          <div class="booking-confirmation-details">
+            <div class="booking-confirmation-detail-row">
+              <span class="bcd-label">Client Name:</span>
+              <span class="bcd-value" id="hConfCust"></span>
+            </div>
+            <div class="booking-confirmation-detail-row">
+              <span class="bcd-label">Vehicle:</span>
+              <span class="bcd-value" id="hConfVeh"></span>
+            </div>
+            <div class="booking-confirmation-detail-row">
+              <span class="bcd-label">Services:</span>
+              <span class="bcd-value" id="hConfSvcs"></span>
+            </div>
+            <div class="booking-confirmation-detail-row">
+              <span class="bcd-label">Server &amp; Shop:</span>
+              <span class="bcd-value">Thalai Nagaram • Hoonigan</span>
+            </div>
+            <div class="booking-confirmation-detail-row">
+              <span class="bcd-label">Status:</span>
+              <span class="bcd-value" style="color:var(--hoon-yellow);">Pending Review</span>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;">
+            <button type="button" class="btn btn-outline" onclick="location.reload()">SUBMIT ANOTHER REQUEST</button>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="hoon-summary-card">
+          <h3 style="font:700 15px 'Orbitron',sans-serif; color:var(--hoon-orange); margin-bottom:16px; letter-spacing:1px;">HOONIGAN GARAGE</h3>
+
+          <div class="booking-summary-row">
+            <span class="booking-summary-label">Server</span>
+            <span class="booking-summary-value">Thalai Nagaram</span>
+          </div>
+          <div class="booking-summary-row">
+            <span class="booking-summary-label">Specialty</span>
+            <span class="booking-summary-value">Performance &amp; Aero</span>
+          </div>
+          <div class="booking-summary-row">
+            <span class="booking-summary-label">Turnaround</span>
+            <span class="booking-summary-value">Same Day (City Time)</span>
+          </div>
+          <div class="booking-summary-row">
+            <span class="booking-summary-label">Discord Logs</span>
+            <span class="booking-summary-value" style="color:var(--green);">✓ Real-time Sync</span>
+          </div>
+
+          <div style="margin-top:20px; padding:14px; background:rgba(0,0,0,0.3); border-radius:10px; font-size:12px; color:#8e9fb5; line-height:1.5;">
+            ⚡ Every build request sends an automated embed to our Thalai Nagaram mechanics' Discord channel for immediate assignment.
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <a class="logo" href="index.html"><span>R</span> REAPERZ</a>
+      <p>Tamil GTA 5 Online &amp; FiveM Community</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="members.html">Members</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">Library</a>
+      <a href="rate.html">Rate Us</a>
+      <a href="about.html">About Us</a>
+      <a href="join.html">Join Us</a>
+      <a href="rules.html">Rules</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html">Staff Portal</a>
+    </div>
+    <p class="copyright">© 2026 REAPERZ Tamil Gaming Community. All rights reserved.</p>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/main.js?v=20261025-biz"></script>
+  <script>
+    (function() {
+      let services = [];
+      const grid = document.getElementById('servicesGrid');
+      const checklist = document.getElementById('servicesChecklist');
+      const form = document.getElementById('hooniganForm');
+      const submitBtn = document.getElementById('hSubmitBtn');
+
+      function escapeHTML(str) {
+        return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+      function formatPrice(n) { return '$' + Number(n || 0).toLocaleString(); }
+
+      function renderServices() {
+        if (!grid) return;
+        if (!services.length) {
+          grid.innerHTML = '<div class="biz-empty" style="grid-column:1/-1;"><h3>No services listed</h3></div>';
+          return;
+        }
+
+        grid.innerHTML = services.map(s => `
+          <div class="service-card">
+            <span class="service-card-category">${escapeHTML(s.category || 'Performance')}</span>
+            <h3 class="service-card-name">${escapeHTML(s.name)}</h3>
+            <p class="service-card-description">${escapeHTML(s.description || 'Professional installation with dyno calibration.')}</p>
+            <div class="service-card-price-range">
+              <span class="service-price-label">Price Range</span>
+              <span class="service-price-value">${formatPrice(s.price_from)} – ${formatPrice(s.price_to)}</span>
+            </div>
+            <div class="service-card-duration">
+              <span>⏱️ Est. Duration:</span>
+              <strong>${escapeHTML(s.duration || '1-3 hours')}</strong>
+            </div>
+            <div class="service-available-badge">Available in Thalai Nagaram</div>
+          </div>
+        `).join('');
+
+        if (checklist) {
+          checklist.innerHTML = services.map(s => `
+            <div class="service-checkbox-item">
+              <input type="checkbox" id="svc_${s.id}" name="services" value="${escapeHTML(s.name)}">
+              <label for="svc_${s.id}">${escapeHTML(s.name)} <small style="color:var(--hoon-yellow); display:block;">(${formatPrice(s.price_from)}+)</small></label>
+            </div>
+          `).join('');
+        }
+      }
+
+      async function loadServices() {
+        try {
+          const res = await fetch('/api/customization-services');
+          const data = await res.json();
+          if (data.success && data.services) {
+            services = data.services;
+            renderServices();
+          }
+        } catch(err) {
+          console.error('[Hoonigan] Error loading services:', err);
+        }
+      }
+
+      // Default date
+      const dIn = document.getElementById('hDate');
+      if (dIn) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        dIn.value = tomorrow.toISOString().split('T')[0];
+        dIn.min = new Date().toISOString().split('T')[0];
+      }
+
+      // Form submission
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const customerName = document.getElementById('hCustName').value.trim();
+        const contactNumber = document.getElementById('hContact').value.trim();
+        const discordUsername = document.getElementById('hDiscord').value.trim();
+        const vehicleName = document.getElementById('hVehName').value.trim();
+        const vehicleModel = document.getElementById('hVehModel').value.trim();
+        const preferredDate = document.getElementById('hDate').value;
+        const preferredTime = document.getElementById('hTime').value.trim();
+        const additionalReq = document.getElementById('hRequirements').value.trim();
+
+        const selectedServices = Array.from(document.querySelectorAll('#servicesChecklist input[name="services"]:checked'))
+          .map(cb => cb.value);
+
+        if (!customerName || !contactNumber || !discordUsername || !vehicleName) {
+          alert('Please fill in customer name, contact number, Discord username, and vehicle name.');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'SUBMITTING REQUEST...';
+
+        try {
+          const res = await fetch('/api/customization-requests', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              customer_name: customerName,
+              contact_number: contactNumber,
+              discord_username: discordUsername,
+              vehicle_name: vehicleName,
+              vehicle_model: vehicleModel,
+              services: selectedServices,
+              additional_requirements: additionalReq,
+              preferred_date: preferredDate,
+              preferred_time: preferredTime
+            })
+          });
+
+          const result = await res.json();
+          if (result.success && result.request) {
+            const r = result.request;
+            document.getElementById('hoonFormContainer').style.display = 'none';
+            const conf = document.getElementById('hoonConfirmation');
+            conf.style.display = 'block';
+
+            document.getElementById('hConfRef').textContent = r.reference;
+            document.getElementById('hConfCust').textContent = r.customer_name;
+            document.getElementById('hConfVeh').textContent = r.vehicle_name + (r.vehicle_model ? ' (' + r.vehicle_model + ')' : '');
+            document.getElementById('hConfSvcs').textContent = selectedServices.length ? selectedServices.join(', ') : 'Custom fabrication';
+
+            window.scrollTo({ top: document.getElementById('request-section').offsetTop - 40, behavior: 'smooth' });
+          } else {
+            alert(result.message || 'Submission failed.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>SUBMIT CUSTOMIZATION REQUEST</span> <span aria-hidden="true">→</span>';
+          }
+        } catch(err) {
+          console.error('[Hoonigan] Error submitting:', err);
+          alert('Failed to submit request.');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>SUBMIT CUSTOMIZATION REQUEST</span> <span aria-hidden="true">→</span>';
+        }
+      });
+
+      loadServices();
+    })();
+  </script>
+</body>
+</html>
